@@ -28,7 +28,7 @@ class Application_Form_Connexion extends Zend_Form {
 		
 		// Parametrage du formulaire
 		$this->setMethod('post');
-		$this->setAction('index/connexion');
+		$this->setAction(Zend_Registry::get('baseUrl'));
 		$this->setAttrib('id', 'form_connexion');
 		
 		//Desactivation des décorateurs par défaut et ajout du notre
@@ -37,18 +37,20 @@ class Application_Form_Connexion extends Zend_Form {
 		
 		// Création de l'input et label pour le login
 		$input_login = new Zend_Form_Element_Text('login');
+		$input_login->setName("login");
 		$input_login->setLabel('Votre identifiant de connexion');
 		$input_login->setRequired(true);
 		$input_login->setDecorators($decorators_input);
 		
 		// Création de l'input et label pour le mot de passe
 		$input_mdp = new Zend_Form_Element_Password('mdp');
+		$input_mdp->setName("mdp");
 		$input_mdp->setLabel('Votre mot de passe de connexion');
 		$input_mdp->setRequired(true);
 		$input_mdp->setDecorators($decorators_input);
 		
 		// Création du bouton d'envoie du formulaire
-		$input_submit = new Zend_Form_Element_Submit('Valider');
+		$input_submit = new Zend_Form_Element_Submit('Connexion');
 		$input_submit->removeDecorator('DtDdWrapper');
 		
 		// Ajout des éléments au formulaire
