@@ -9,4 +9,7 @@ class Application_Model_TAeroport extends Zend_Db_Table_Abstract
 			array('columns' => 'id_ville',
 					'refTableClass' => 'ville',
 					'refColumns' => 'id_ville'));
+	
+	
+	
 }
