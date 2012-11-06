@@ -35,6 +35,16 @@ class Application_Form_AjoutLigne extends Zend_Form
 		$this->addElement($sAeroportA);
 		$this->addElement($btSubmit);
 	
+		//Instancie class ligne
+		$ligneInstance = new Application_Model_TAeroport;
+		//Requete pour le des aéroports
+		$listeAeroport = $ligneInstance->select()->from((array('a' => 'aeroport')), array("a.nom_aeroport"));
+		
+		$listeResultat = $ligneInstance->fetchAll($listeAeroport);
+
+		$sAeroportD->setValue($listeResultat->toArray());
+
+		
 		
 	}
 }
