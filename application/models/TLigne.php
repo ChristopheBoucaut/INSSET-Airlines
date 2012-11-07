@@ -6,11 +6,8 @@ class Application_Model_TLigne extends Zend_Db_Table_Abstract
 	protected $_primary = 'id_ligne';
 	
 	protected $_referenceMap = array('aeroport' =>
-			array('columns' => 'aeroport_arrive', 'columns' => 'aeroport_depart',
+			array('columns' => array('aeroport_arrive','aeroport_depart'),
 					'refTableClass' => 'aeroport',
 					'refColumns' => 'id_aeroport'));
 
-	
-	
-	
 }

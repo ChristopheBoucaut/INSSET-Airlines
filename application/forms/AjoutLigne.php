@@ -56,7 +56,7 @@ class Application_Form_AjoutLigne extends Zend_Form
 	
 		//Instancie class ligne
 		$ligneInstance = new Application_Model_TAeroport;
-		//Requete pour le des aéroports
+		//Requete pour les aéroports
 		$listeAeroport = $ligneInstance->select()->from((array('a' => 'aeroport')), array("a.id_aeroport","a.nom_aeroport"));
 		//Recupération des résultat de la requete
 		$listeResultat = $ligneInstance->fetchAll($listeAeroport);
