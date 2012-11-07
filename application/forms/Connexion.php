@@ -1,11 +1,24 @@
 <?php
 
+/**
+  * Formulaire de connexion
+  * @class: Application_Form_Connexion
+  * @file: Connexion.php
+  * @author : Christophe BOUCAUT
+  * @version: 1.0
+  *
+  * @changelogs :
+  * Rev 1.0 du 7 nov. 2012
+  * - Version initiale
+  *
+ **/
+
 class Application_Form_Connexion extends Zend_Form {
 	
 	/**
-	 * permet d'initialiser l'objet Connexion/Zend_Form
-	 * return : null
-	 */
+	  * permet d'initialiser l'objet Connexion/Zend_Form
+	  * @return: void
+	 **/
 	public function init(){
 		
 		// Décorateur pour les inputs de login et mdp

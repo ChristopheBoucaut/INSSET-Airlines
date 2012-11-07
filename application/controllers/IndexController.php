@@ -1,5 +1,18 @@
 <?php
 
+/**
+  * Classe appelée par défaut si pas d'action/controller demandé. Gère la connexion et déconnexion du site
+  * @class: IndexController
+  * @file: IndexController.php
+  * @author : Christophe BOUCAUT
+  * @version: 1.0
+  *
+  * @changelogs :
+  * Rev 1.0 du 7 nov. 2012
+  * - Version initiale
+  *
+ **/
+
 class IndexController extends Zend_Controller_Action
 {
 
@@ -8,9 +21,10 @@ class IndexController extends Zend_Controller_Action
         /* Initialize action controller here */
     }
 
-    /*
-     * Action réalisée lors de l'arrivée sur le site pour la première fois par l'utilisateur
-     */
+	/**
+	  * Action par défaut, sert à la connexion
+	  * @return: void
+	 **/
     public function indexAction()
     {	
     	
@@ -74,6 +88,15 @@ class IndexController extends Zend_Controller_Action
     				// Récupère l'id et login
     				$data = $dbAdapter->getResultRowObject(null, 'mdp');
     				
+    				// On instancie le modele de la table section pour récupérer les sections donc l'utilisateur a accès
+    				$tsection = new Application_Model_TSection();
+    				
+    				// On récupère la liste des sections dont l'utilisateur a accès
+    				$liste_sections_acces = $tsection->listesSectionsAcces($data->id_utilisateur);
+    				
+    				// Stockage dans data des sections pour ensuite les stocker dans zend_auth
+    				$data->liste_sections_acces = $liste_sections_acces;
+
     				// Stocke id et login dans zend_auth
     				$auth->getStorage()->write($data);
     				
@@ -100,6 +123,21 @@ class IndexController extends Zend_Controller_Action
     		$this->view->assign('error_connexion', $error_connexion);
     	}
     	
+    }
+    
+    /**
+      * Permet de déconnecter l'utilisateur
+      * @return: void 
+     **/
+    public function deconnexionAction(){
+    	// Instanciation de Zend_Auth
+    	$auth = Zend_Auth::getInstance();
+    	
+    	// Supprime la connexion de l'utilisateur
+    	$auth->clearIdentity();
+    	
+    	// Redirige à la page de connexion
+    	$this->_helper->getHelper('Redirector')->gotoSimple('index', 'index');
     }
 
 }
