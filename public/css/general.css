@@ -1,0 +1,21 @@
+html, body{
+	height:100%;
+	width:100%;
+}
+
+#background{
+	background-image:url('../img/background.jpg');
+	background-repeat:no-repeat;
+	height:100%;
+	position:absolute;
+	left:50%;
+	margin-left:-680px;
+	width:1361px;
+}
+
+#main{
+	border:1px solid black;
+	width:980px;
+	margin:auto;
+	background-image:url('../img/overlay_bg.png');
+}
