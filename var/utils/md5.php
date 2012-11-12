@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Permet de générer un mdp en MD5
+ */
+
 if(isset($_GET['mdp'])){
 	echo "Le mot de passe : ".$_GET['mdp']."<br/>donne en MD5 : ".md5($_GET['mdp']);
 }else{
