@@ -2,7 +2,7 @@
 
 class Application_Plugin_PluginConnexion extends Zend_Controller_Plugin_Abstract {
 	
-	public function preDispatch()
+	public function preDispatch(Zend_Controller_Request_Abstract $request)
 	{
 		$auth = Zend_Auth::getInstance();
 		
@@ -25,3 +25,5 @@ class Application_Plugin_PluginConnexion extends Zend_Controller_Plugin_Abstract
 		}
 	}
 }
+
+?>
