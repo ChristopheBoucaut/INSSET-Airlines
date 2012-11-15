@@ -34,7 +34,9 @@ public final class R {
     public static final class layout {
         public static final int activity_air_lines=0x7f030000;
         public static final int activity_choix=0x7f030001;
-        public static final int affichageitem=0x7f030002;
+        public static final int activity_liste_avion=0x7f030002;
+        public static final int affichageitem=0x7f030003;
+        public static final int avion=0x7f030004;
     }
     public static final class menu {
         public static final int activity_air_lines=0x7f060000;
