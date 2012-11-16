@@ -7,6 +7,7 @@ import com.example.projet_airlines.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 public class ChoixListeActivity extends Activity{
 	
 	private ListView lvChoixPerso;
+	public static Utilisateur user;//permet d'envoyer l'objet dans une prochaine activité (static)
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class ChoixListeActivity extends Activity{
         //String Variable = extra.getClass(user)<Utilisateur>; getString("label");
         
         lvChoixPerso = (ListView) findViewById(R.id.lvChoix);
-        Utilisateur user = getIntent().getExtras().getParcelable("utilisateur");
+        user = getIntent().getExtras().getParcelable("utilisateur"); // recréer lutilisateur grace au parcelable recu de l'activity précedente
         
         Toast.makeText(getApplicationContext(), "Bienvenue "+user.getNom()+".", Toast.LENGTH_LONG).show();
       //Création de la ArrayList qui nous permettra de remplire la listView
@@ -94,6 +96,16 @@ public class ChoixListeActivity extends Activity{
         		adb.setPositiveButton("Ok", null);
         		//on affiche la boite de dialogue
         		adb.show();
+
+
+        		if(map.get("titre").equals("Maintenance")){	
+	        		// Lance l'activity selon le choix de l'utilisateur
+	        		Intent intent = new Intent(ChoixListeActivity.this, Maintenance.class);
+					intent.putExtra("utilisateur", user);// besoin de "implements Parcelable" dans la classe Utilisateur
+					Toast.makeText(getApplicationContext(), "Maintenance.", Toast.LENGTH_SHORT).show();
+					startActivity(intent);//lance l'activity des choix de l'utilisateur
+					finish();//ferme l'activity primaire de connexion
+        		}
 			}
 		});
     } 
