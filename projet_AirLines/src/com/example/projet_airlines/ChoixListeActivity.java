@@ -104,7 +104,7 @@ public class ChoixListeActivity extends Activity{
 					intent.putExtra("utilisateur", user);// besoin de "implements Parcelable" dans la classe Utilisateur
 					Toast.makeText(getApplicationContext(), "Maintenance.", Toast.LENGTH_SHORT).show();
 					startActivity(intent);//lance l'activity des choix de l'utilisateur
-					finish();//ferme l'activity primaire de connexion
+					//finish();//ferme l'activity primaire de connexion
         		}
 			}
 		});
