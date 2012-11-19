@@ -42,7 +42,7 @@ class Application_Form_SupprLigne extends Zend_Form
 		foreach($listeResultat as $res)
 		{
 			//$idLigne->setLabel($res->aeroport_depart);
-			$idLigne->addMultiOption($res->id_ligne, $res->aeroport_arrive);
+			$idLigne->addMultiOption($res->id_ligne, $res->nom_ligne);
 		}
 		$idLigne->setDecorators($decorators_input);
 		
