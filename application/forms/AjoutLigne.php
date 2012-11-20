@@ -20,31 +20,28 @@ class Application_Form_AjoutLigne extends Zend_Form
 				'Form'
 		);
 		
-		
 		//Paramétre le formulaire
 		$this->setMethod('post');
 		$this->setAction(Zend_Registry::get('baseUrl'));
 		$this->setAttrib('id', 'form_ajout_ligne');
 		$this->addDecorators($decorators_form);
 		
-		//Instancie un element type file
+		//Champ du nom ligne
 		$tNom = new Zend_Form_Element_Text('nom_ligne');
-		$sAeroportD = new Zend_Form_Element_Select('aeroport_depart');
-		$sAeroportA = new Zend_Form_Element_Select('aeroport_arrive');
-			
-		
-		//Ajout d'un label au champ d'ajout
 		$tNom->setLabel('Nom:');
-		$tNom->setDecorators($decorators_input);
-		$sAeroportD->setLabel('Aeroport Depart:');
-		$sAeroportA->setLabel('Aeroport Arrivé:');
-		
-		
-		//Rend obligatoire le champ type file
 		$tNom->setRequired(true);
-		$sAeroportD->setRequired(true);
-		$sAeroportA->setRequired(true);
+		$tNom->setDecorators($decorators_input);
 		
+		//Champ de l'aeroport de depart
+		$sAeroportD = new Zend_Form_Element_Select('aeroport_depart');
+		$sAeroportD->setLabel('Aeroport Depart:');
+		$sAeroportD->setRequired(true);
+		
+		//Champ de l'aeroport darrive
+		$sAeroportA = new Zend_Form_Element_Select('aeroport_arrive');
+		$sAeroportA->setLabel('Aeroport Arrivé:');
+		$sAeroportA->setRequired(true);
+
 		//Instancie un element type submit
 		$btSubmit = new Zend_Form_Element_Submit('Envoyer');
 		
@@ -53,7 +50,7 @@ class Application_Form_AjoutLigne extends Zend_Form
 		$this->addElement($sAeroportD);
 		$this->addElement($sAeroportA);
 		$this->addElement($btSubmit);
-	
+			
 		//Instancie class ligne
 		$ligneInstance = new Application_Model_TAeroport;
 		//Requete pour les aéroports
