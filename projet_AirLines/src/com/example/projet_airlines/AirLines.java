@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 public class AirLines extends Activity {
 
+	private final boolean PARSE_JSON = true;
 	EditText eTextLogin, eTextPass;
 	static public Utilisateur User;
 	//final Button buttonConnexion;
@@ -83,7 +84,7 @@ public class AirLines extends Activity {
 	            //Création d'un objet pour faire des demande HTTP
 	            ToolsHTTPandJASON Reponse = new ToolsHTTPandJASON();
 	            //Stock la valeur en mémoire pour eviter de faire l'appel 2x (car je fait un affichage dans le log console)
-	            String Requete = Reponse.RecuperationRequeteHTTP("http://10.0.2.2/script.php", nameValuePairs);
+	            String Requete = Reponse.RecuperationRequeteHTTP("http://10.0.2.2/script.php", nameValuePairs, PARSE_JSON);
 	            Log.i("DATA" , Requete);
 	            JSONObject js = new JSONObject(Requete);  
 	            if(js.getInt("id_utilisateur") > 0){
