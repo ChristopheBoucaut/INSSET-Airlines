@@ -4,10 +4,11 @@
   * Classe appelée par défaut si pas d'action/controller demandé. Gère la connexion et déconnexion du site
   * @class: IndexController
   * @file: IndexController.php
-  * @author : Christophe BOUCAUT
+  * 
+  * @author: Christophe BOUCAUT
   * @version: 1.0
   *
-  * @changelogs :
+  * @changelogs:
   * Rev 1.0 du 7 nov. 2012
   * - Version initiale
   *
@@ -44,7 +45,7 @@ class IndexController extends Zend_Controller_Action
     	
     	// Si on est déjà connecté, on est directement réenvoyé sur une page d'accueil
     	if($auth->hasIdentity()){
-    		$this->_helper->getHelper('Redirector')->gotoSimple('default', 'default');
+    		$this->_helper->getHelper('Redirector')->gotoSimple('index', 'intranet');
     	}
     	
     	// affichage du formulaire lors de la première visite
@@ -105,7 +106,7 @@ class IndexController extends Zend_Controller_Action
     					$this->_helper->getHelper('Redirector')->gotoSimple($data_get['need_action'], $data_get['need_controller']);
     				}else{
     					// si non, on le redirige vers une page par défaut
-    					$this->_helper->getHelper('Redirector')->gotoSimple('default', 'default');
+    					$this->_helper->getHelper('Redirector')->gotoSimple('index', 'intranet');
     				}
     			}else{
     				$test_connexion = false;

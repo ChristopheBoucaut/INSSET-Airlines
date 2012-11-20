@@ -1,15 +1,34 @@
 <?php
 
+/**
+ * Classe permettant de gérer les évènements à appliquer pour la gestion de la connexion
+ * durant le déroulement des controllers
+ * @class: Application_Plugin_PluginConnexion
+ * @file: PluginConnexion.php
+ *
+ * @author: Christophe BOUCAUT
+ * @version: 1.0
+ *
+ * @changelogs:
+ * Rev 1.0 du 20 nov. 2012
+ * - Version initiale
+ *
+ **/
 class Application_Plugin_PluginConnexion extends Zend_Controller_Plugin_Abstract {
 	
+	/**
+	 * Fonction appliqué avant le lancement du controller désiré
+	 * @param: Zend_Controller_Request_Abstract $request
+	 * @return: void
+	 **/
 	public function preDispatch(Zend_Controller_Request_Abstract $request)
 	{
 		$auth = Zend_Auth::getInstance();
 		
 		// Si on est pas connecté et qu'on est pas sur le formulaire de connexion
 		if(!$auth->hasIdentity()
-				&& $this->_request->getControllerName() != 'index'
-				&& $this->_request->getActionName() != 'index')
+				&& ($this->_request->getControllerName() != 'index'
+				|| $this->_request->getActionName() != 'index'))
 		{
 			// On récupère l'action et controller désiré
 			$need_action = $this->_request->getActionName();
