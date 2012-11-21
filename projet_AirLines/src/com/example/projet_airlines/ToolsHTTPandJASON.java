@@ -23,7 +23,7 @@ import android.util.Log;
 
 public class ToolsHTTPandJASON {
 	// ATTENTION NECESSITE SOUVENT <uses-permission android:name="android.permission.INTERNET"/>  				 <----- A LIRE 
-		public String RecuperationRequeteHTTP(String URL, List nameValuePairs){
+		public String RecuperationRequeteHTTP(String URL, List nameValuePairs, boolean PARSE_JSON){
 			// On créé un client http
 			HttpClient httpclient = new DefaultHttpClient();
 			// On créé notre entête
@@ -40,7 +40,7 @@ public class ToolsHTTPandJASON {
 				HttpEntity entity = response.getEntity();
 				//Log.i("DATA", "Entité de la réponse");
 				is = entity.getContent();
-				return ConvertIStoString(is);
+				return ConvertIStoString(is, PARSE_JSON);
 			} catch (ClientProtocolException e) {
 				Log.i("Erreur ClientProtocol : ", e.getMessage());
 				return "Erreur";
@@ -51,7 +51,7 @@ public class ToolsHTTPandJASON {
 		}
 
 		//HttpEntity -- InputSteam
-		public String ConvertIStoString(InputStream is){
+		public String ConvertIStoString(InputStream is, boolean PARSE_JSON){
 			// Convertion de la requète en string
 			try{
 				//Log.i("DATA", "Conversion is to String");
@@ -63,7 +63,10 @@ public class ToolsHTTPandJASON {
 				}
 				is.close();
 				//Log.i("DATA", sb.toString());
-				return ParseJSON(sb.toString()); // ATTENTION SI LES DONNEES SONT EN JSON LES ANALYSER AVEC la fonction ParseJSON(String DataJSON)
+				if(PARSE_JSON)
+					return ParseJSON(sb.toString());
+				else
+					return sb.toString(); // ATTENTION SI LES DONNEES SONT EN JSON LES ANALYSER AVEC la fonction ParseJSON(String DataJSON)
 			}catch(Exception e){
 				Log.e("log_tag", "Erreur de conversion du resultat " + e.toString());
 				return "Erreur";
