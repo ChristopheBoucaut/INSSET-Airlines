@@ -1,0 +1,1 @@
+Les scripts sont à mettre directement dans le dossier "www" de WampServer par exemple.
