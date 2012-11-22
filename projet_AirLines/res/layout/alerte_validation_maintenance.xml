@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+ 
+    <TextView
+    android:id="@+id/TextViewAlertMaintenance"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Entrer le nombre de jours effectif :"
+    android:paddingBottom="10dip" />
+ 
+  <EditText 
+    android:id="@+id/EditTextAlertMaintenance"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/TextViewAlertMaintenance"  />
+  
+</RelativeLayout>

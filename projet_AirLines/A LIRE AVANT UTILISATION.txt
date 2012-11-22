@@ -1,0 +1,10 @@
+*Maxime Jallu
+------------------
+- 16.11.12
+
+Pour executer l'application il faut imperativement monter la base de données sur un serveur MySQL (local) et lancer l'appli d'un émulateur (connexion 10.0.2.2)
+
+
+La base est dans le dossier (AirLines/insset_db.sql) ... 
+
+-------------------

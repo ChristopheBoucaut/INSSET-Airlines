@@ -87,15 +87,15 @@ public class ChoixListeActivity extends Activity{
 				//on récupère la HashMap contenant les infos de notre item (titre, description, img)
         		HashMap<String, String> map = (HashMap<String, String>) lvChoixPerso.getItemAtPosition(position);
         		//on créer une boite de dialogue
-        		AlertDialog.Builder adb = new AlertDialog.Builder(ChoixListeActivity.this);
+        	//	AlertDialog.Builder adb = new AlertDialog.Builder(ChoixListeActivity.this);
         		//on attribut un titre à notre boite de dialogue
-        		adb.setTitle("Sélection Item");
+        	//	adb.setTitle("Sélection Item");
         		//on insère un message à notre boite de dialogue, et ici on affiche le titre de l'item cliqué
-        		adb.setMessage("Votre choix : "+map.get("titre"));
+        	//	adb.setMessage("Votre choix : "+map.get("titre"));
         		//on indique que l'on veut le bouton ok à notre boite de dialogue
-        		adb.setPositiveButton("Ok", null);
+        	//	adb.setPositiveButton("Ok", null);
         		//on affiche la boite de dialogue
-        		adb.show();
+        	//	adb.show();
 
 
         		if(map.get("titre").equals("Maintenance")){	
