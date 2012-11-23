@@ -1,0 +1,21 @@
+<div id="content-block-connecte">
+	<?php 
+		echo $this->action('cadreconnecte', 'intranet');
+	?>
+</div>
+
+<div id="content-menu">
+	<ul class="menu-onglet">
+		<?php
+		
+			foreach($this->content_onglets as $nom => $chaine_baseurl){
+				echo "<li><a href='".$this->baseUrl($chaine_baseurl)."?ajax=1'>".$nom."</a></li>";
+			}
+		
+		?>
+	</ul>
+	
+	<div id="content-ajax">
+	
+	</div>
+</div>

@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+.menu-onglet li{
+	display:inline;
+	border:1px solid black;
+	background-color:white;
+}

@@ -37,6 +37,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		
 		// Plugin vérifiant la connexion au début de chaque controller
 		$frontcontroller->registerPlugin(new Application_Plugin_PluginConnexion());
+		$frontcontroller->registerPlugin(new Application_Plugin_PluginAccesAjax());
 	}
 }
 

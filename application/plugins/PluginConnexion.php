@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe permettant de gérer les évènements à appliquer pour la gestion de la connexion
+ * Plugin permettant de gérer les évènements à appliquer pour la gestion de la connexion
  * durant le déroulement des controllers
  * @class: Application_Plugin_PluginConnexion
  * @file: PluginConnexion.php
@@ -26,16 +26,20 @@ class Application_Plugin_PluginConnexion extends Zend_Controller_Plugin_Abstract
 		$auth = Zend_Auth::getInstance();
 		
 		// Si on est pas connecté et qu'on est pas sur le formulaire de connexion
-		if(!$auth->hasIdentity()
-				&& ($this->_request->getControllerName() != 'index'
-				|| $this->_request->getActionName() != 'index'))
+		if($this->_request->getControllerName() != 'index' && (
+				!$auth->hasIdentity()
+				&& ($this->_request->getControllerName() != 'intranet'
+				|| ($this->_request->getActionName() != 'index' && $this->_request->getActionName() != 'deconnexion')
+				)
+			)
+		)
 		{
 			// On récupère l'action et controller désiré
 			$need_action = $this->_request->getActionName();
 			$need_controller = $this->_request->getControllerName();
 			
 			// On prépare l'url de redirection 
-			$url = '/index/index?need_action='.$need_action.'&need_controller='.$need_controller.'&need_connexion=1';
+			$url = '/intranet/index?need_action='.$need_action.'&need_controller='.$need_controller.'&need_connexion=1';
 			
 			// On instancie une aide redirector et on effectue la redirection
 			$redirector = new Zend_Controller_Action_Helper_Redirector;
