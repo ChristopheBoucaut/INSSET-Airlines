@@ -34,15 +34,25 @@ class Application_Form_SupprLigne extends Zend_Form
 		//Instancie class AEROPORT
 		$class_Aeroport = new Application_Model_TAeroport;
 		//Requete pour le des aéroports
+		/*
 		$requete = $class_Ligne->select()->from($class_Ligne);
-		
 		$listeResultat = $class_Ligne->fetchAll($requete);
-		
+		*/
+		//Requete avec jointure
+		$requete = $class_Ligne->select()->setIntegrityCheck(false)
+							->from((array('ligne','aeroport')),array('ligne.id_ligne',
+																		'ligne.nom_ligne',
+																		'aeroport.nom_aeroport'))
+							->join('aeroport','ligne.aeroport_depart = aeroport.id_aeroport', '')
+							->join('aeroport','ligne.aeroport_arrive = aeroport.id_aeroport', '');
+		//Test d'affichage de la jointure
+		echo $requete->assemble();
+		$listeResultat = $class_Ligne->fetchAll($requete);
 		//Ajout d'un label au champ d'ajout
 		foreach($listeResultat as $res)
 		{
 			//$idLigne->setLabel($res->aeroport_depart);
-			$idLigne->addMultiOption($res->id_ligne, $res->nom_ligne);
+			$idLigne->addMultiOption($res->id_ligne, $res->nom_ligne .' '. $res->nom_aeroport .' '. $res->nom_aeroport);
 		}
 		$idLigne->setDecorators($decorators_input);
 		
