@@ -40,11 +40,16 @@ class Application_Form_SupprLigne extends Zend_Form
 		*/
 		//Requete avec jointure
 		$requete = $class_Ligne->select()->setIntegrityCheck(false)
-							->from((array('ligne','aeroport')),array('ligne.id_ligne',
-																		'ligne.nom_ligne',
-																		'aeroport.nom_aeroport'))
-							->join('aeroport','ligne.aeroport_depart = aeroport.id_aeroport', '')
-							->join('aeroport','ligne.aeroport_arrive = aeroport.id_aeroport', '');
+							->from((array('d' => 'aeroport')),array('l.id_ligne','l.nom_ligne','d.nom_aeroport as depart','a.nom_aeroport as arrive'))
+							->join(array('l' => 'ligne'),'l.aeroport_depart = d.id_aeroport', '')
+							->join(array('a' => 'aeroport'),'l.aeroport_arrive = a.id_aeroport', '');
+		//REQUETE		
+		/*			
+		SELECT l.id_ligne, d.nom_aeroport, a.nom_aeroport
+		FROM aeroport d INNER JOIN (ligne l INNER JOIN aeroport a ON l.aeroport_arrive = a.id_aeroport ) 
+						ON l.aeroport_depart  = d.id_aeroport;
+		*/
+							
 		//Test d'affichage de la jointure
 		echo $requete->assemble();
 		$listeResultat = $class_Ligne->fetchAll($requete);
@@ -52,7 +57,7 @@ class Application_Form_SupprLigne extends Zend_Form
 		foreach($listeResultat as $res)
 		{
 			//$idLigne->setLabel($res->aeroport_depart);
-			$idLigne->addMultiOption($res->id_ligne, $res->nom_ligne .' '. $res->nom_aeroport .' '. $res->nom_aeroport);
+			$idLigne->addMultiOption($res->id_ligne, $res->nom_ligne .' '. $res->depart .' '. $res->arrive);
 		}
 		$idLigne->setDecorators($decorators_input);
 		
