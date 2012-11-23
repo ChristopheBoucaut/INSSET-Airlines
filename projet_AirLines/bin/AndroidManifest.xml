@@ -7,7 +7,7 @@
     <!--
          <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:targetSdkVersion="15" />
     -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -35,6 +35,10 @@
         <activity
             android:name="com.example.projet_airlines.ListeMaintenance"
             android:label="@string/title_activity_liste_maitenance" >
+        </activity>
+        <activity
+            android:name="com.example.projet_airlines.AjouterMaintenance"
+            android:label="@string/title_activity_ajouter_maintenance" >
         </activity>
     </application>
 

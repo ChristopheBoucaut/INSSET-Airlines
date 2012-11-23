@@ -41,6 +41,9 @@ public class Maintenance extends Activity {
 			
 			public void onClick(View v) {
 				Toast.makeText(getApplicationContext(), "En développement...", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(Maintenance.this, AjouterMaintenance.class);
+				//intent.putExtra("utilisateur", user);// besoin de "implements Parcelable" dans la classe Utilisateur
+				startActivity(intent);//lance l'activity des choix de l'utilisateur
 				
 			}
 		});
