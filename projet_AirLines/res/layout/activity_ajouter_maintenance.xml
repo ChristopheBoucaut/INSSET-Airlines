@@ -37,7 +37,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonEnregistrerMaintenance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -98,14 +98,6 @@
         android:entries="@array/liste_annee_maintenance"
         tools:listitem="@android:layout/simple_spinner_item" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerJourMaintenance"
-        android:layout_toRightOf="@+id/spinnerJourMaintenance"
-        android:text="Type de maintenance :" />
-
     <Spinner
         android:id="@+id/spinnerChoixTypeMaintenance"
         android:layout_width="wrap_content"
@@ -123,5 +115,13 @@
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/textView4"
         android:text="Immatriculation de l&apos;avion :" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerJourMaintenance"
+        android:layout_centerHorizontal="true"
+        android:text="Type de maintenance :" />
 
 </RelativeLayout>
