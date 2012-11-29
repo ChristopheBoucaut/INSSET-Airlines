@@ -25,31 +25,26 @@ public final class R {
         public static final int vol=0x7f020005;
     }
     public static final class id {
-        public static final int EditTextAlertMaintenance=0x7f080017;
-        public static final int TextViewAlertMaintenance=0x7f080016;
+        public static final int EditTextAlertMaintenance=0x7f080012;
+        public static final int TextViewAlertMaintenance=0x7f080011;
         public static final int button1=0x7f080005;
-        public static final int buttonAjouterMaintenance=0x7f080012;
+        public static final int buttonAjouterMaintenance=0x7f08000d;
+        public static final int buttonDateRevision=0x7f080009;
         public static final int buttonEnregistrerMaintenance=0x7f080007;
-        public static final int buttonListeMaintenance=0x7f080011;
-        public static final int description=0x7f080015;
+        public static final int buttonListeMaintenance=0x7f08000c;
+        public static final int description=0x7f080010;
         public static final int editText1=0x7f080001;
         public static final int editText2=0x7f080002;
         public static final int editTextImmatriculationAjoutMaintenance=0x7f080006;
-        public static final int img=0x7f080013;
-        public static final int lvChoix=0x7f08000f;
-        public static final int lvMaintenance=0x7f080010;
-        public static final int menu_settings=0x7f080018;
-        public static final int spinnerAnneeMaintenance=0x7f08000d;
-        public static final int spinnerChoixTypeMaintenance=0x7f08000e;
-        public static final int spinnerJourMaintenance=0x7f080009;
-        public static final int spinnerMoisMaintenance=0x7f08000b;
+        public static final int img=0x7f08000e;
+        public static final int lvChoix=0x7f08000a;
+        public static final int lvMaintenance=0x7f08000b;
+        public static final int menu_settings=0x7f080013;
+        public static final int spinnerChoixTypeMaintenance=0x7f080008;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080003;
         public static final int textView3=0x7f080004;
-        public static final int textView4=0x7f08000a;
-        public static final int textView5=0x7f080008;
-        public static final int textView6=0x7f08000c;
-        public static final int titre=0x7f080014;
+        public static final int titre=0x7f08000f;
     }
     public static final class layout {
         public static final int activity_air_lines=0x7f030000;
