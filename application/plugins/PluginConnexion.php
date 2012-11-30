@@ -26,8 +26,9 @@ class Application_Plugin_PluginConnexion extends Zend_Controller_Plugin_Abstract
 		$auth = Zend_Auth::getInstance();
 		
 		// Si on est pas connecté et qu'on est pas sur le formulaire de connexion
-		if($this->_request->getControllerName() != 'index' && (
-				!$auth->hasIdentity()
+		if($this->_request->getControllerName() != 'index' 
+				&& $this->_request->getControllerName() != 'error'
+				&& (!$auth->hasIdentity()
 				&& ($this->_request->getControllerName() != 'intranet'
 				|| ($this->_request->getActionName() != 'index' && $this->_request->getActionName() != 'deconnexion')
 				)

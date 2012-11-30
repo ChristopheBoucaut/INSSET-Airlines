@@ -21,9 +21,7 @@ class IntranetController extends Zend_Controller_Action
 	 * @return: void
 	 **/
 	public function init(){
-		echo $this->view->headLink()->appendStylesheet($this->view->baseUrl()."/css/intranet.css");
-		echo $this->view->headScript()->appendFile($this->view->baseUrl().'/js/jquery.js');
-		echo $this->view->headScript()->appendFile($this->view->baseUrl().'/js/intranet.js');
+		
 	}
 	
 	/**
@@ -38,7 +36,7 @@ class IntranetController extends Zend_Controller_Action
 		 
 		// Instanciation de Zend_Auth
 		$auth = Zend_Auth::getInstance();
-		 
+		
 		// On récupère les données de GET
 		$data_get = $this->getRequest()->getQuery();
 		 
@@ -167,6 +165,10 @@ class IntranetController extends Zend_Controller_Action
 	 * @return: void
 	 **/
 	public function menuAction(){
+		echo $this->view->headLink()->appendStylesheet($this->view->baseUrl()."/css/intranet.css");
+		echo $this->view->headScript()->appendFile($this->view->baseUrl().'/js/jquery.js');
+		echo $this->view->headScript()->appendFile($this->view->baseUrl().'/js/intranet.js');
+		
 		// On récupère les accès de la personne connectée
 		$auth = Zend_Auth::getInstance();
 		$data_auth = $auth->getIdentity();
