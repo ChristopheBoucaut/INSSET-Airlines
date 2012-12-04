@@ -35,7 +35,7 @@ function disabledForm(form_submit){
 	var action = $(form_submit).attr('action');
 	var method = $(form_submit).attr('method');
 	
-	var str ="var param_form={";
+	var str ="var param_form={'ajax':'1'";
 	var i=0;
 	/*
 	 * On parcourt tous les éléments du formulaire et on créer une chaine de caractère pour créer un tableau de parametre
@@ -44,11 +44,7 @@ function disabledForm(form_submit){
 		console.log($(this));
 		if((($(this).attr('type')=="radio" || $(this).attr('type')=="checkbox") &&  $(this)[0].checked==true)
 				|| ($(this).attr('type')!="radio" && $(this).attr('type')!="checkbox")){
-			if(i==0){
-				i=1;
-			}else{
-				str=str+",";
-			}
+			str=str+",";
 			var name = $(this).attr('name');
 			var val = $(this).val();
 			if(name==""){
@@ -60,6 +56,7 @@ function disabledForm(form_submit){
 		}
 	});
 	str=str+"}";
+	console.log(str);
 	/*
 	 * Créer le tableau a passer en param pour la requete ajax
 	 */

@@ -20,11 +20,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  * @return: void
 	 **/
 	public function run(){
-		// on récupère le baseUrl que l'on stocke dans le registry
-		Zend_Registry::set('baseUrl', Zend_Controller_Front::getInstance()->getBaseUrl());
-		
-		parent::run();
-		
+		parent::run();		
 	}
 	
 	/**
@@ -38,6 +34,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// Plugin vérifiant la connexion au début de chaque controller
 		$frontcontroller->registerPlugin(new Application_Plugin_PluginConnexion());
 		$frontcontroller->registerPlugin(new Application_Plugin_PluginAccesAjax());
+		$frontcontroller->registerPlugin(new Application_Plugin_PluginInitVariables());
 	}
 }
 

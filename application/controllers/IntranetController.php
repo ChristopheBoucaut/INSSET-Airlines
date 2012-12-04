@@ -189,7 +189,7 @@ class IntranetController extends Zend_Controller_Action
 					$content_onglets[$all_sections[$id_section]] = 'avion/index';
 					break;
 				case "Gestion des lignes":
-					$content_onglets[$all_sections[$id_section]] = 'ligne/index';
+					$content_onglets[$all_sections[$id_section]] = 'ligne/ajout';
 					break;
 				case "Gestion du personnel naviguant":
 					$content_onglets[$all_sections[$id_section]] = 'personnel/index';
