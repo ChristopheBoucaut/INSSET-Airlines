@@ -41,7 +41,6 @@ function disabledForm(form_submit){
 	 * On parcourt tous les éléments du formulaire et on créer une chaine de caractère pour créer un tableau de parametre
 	 */
 	$(form_submit).find('*:input').each(function(){
-		console.log($(this));
 		if((($(this).attr('type')=="radio" || $(this).attr('type')=="checkbox") &&  $(this)[0].checked==true)
 				|| ($(this).attr('type')!="radio" && $(this).attr('type')!="checkbox")){
 			str=str+",";
@@ -56,7 +55,6 @@ function disabledForm(form_submit){
 		}
 	});
 	str=str+"}";
-	console.log(str);
 	/*
 	 * Créer le tableau a passer en param pour la requete ajax
 	 */

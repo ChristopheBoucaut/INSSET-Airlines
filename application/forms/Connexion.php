@@ -16,6 +16,28 @@
 class Application_Form_Connexion extends Zend_Form {
 	
 	/**
+	 * Contient l'url pour l'envoie du formulaire
+	 * @var: string $url
+	 **/
+	private $url;
+	
+	/**
+	 * Constructeur
+	 * @param: array $params
+	 * @param: array $options
+	 * @return: Object
+	 **/
+	public function __construct($params, $options=null){
+		if(isset($params['url'])){
+			$this->url = $params['url'];
+		}else{
+			$this->url = "";
+		}
+	
+		parent::__construct($options);
+	}
+	
+	/**
 	  * permet d'initialiser l'objet Connexion/Zend_Form
 	  * @return: void
 	 **/
@@ -41,7 +63,7 @@ class Application_Form_Connexion extends Zend_Form {
 		
 		// Parametrage du formulaire
 		$this->setMethod('post');
-		$this->setAction(Zend_Registry::get('baseUrl'));
+		$this->setAction($this->url);
 		$this->setAttrib('id', 'form_connexion');
 		
 		//Desactivation des décorateurs par défaut et ajout du notre

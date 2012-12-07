@@ -28,18 +28,24 @@ class IntranetController extends Zend_Controller_Action
 	 * Action par défaut, sert à la connexion
 	 * @return: void
 	 **/
-	public function indexAction()
-	{
-		 
-		// instance du formulaire de connexion
-		$form_connexion = new Application_Form_Connexion();
+	public function indexAction(){
 		 
 		// Instanciation de Zend_Auth
 		$auth = Zend_Auth::getInstance();
 		
 		// On récupère les données de GET
 		$data_get = $this->getRequest()->getQuery();
-		 
+		
+		// url pour l'action du formulaire
+		$url = $this->view->baseUrl('intranet/index');
+		
+		if(isset($data_get['need_action']) && isset($data_get['need_controller'])){
+			$url .= "?need_action=".$data_get['need_action']."&need_controller=".$data_get['need_controller']."&need_connexion=1";
+		}		 
+		
+		// instance du formulaire de connexion
+		$form_connexion = new Application_Form_Connexion(array('url'=>$url));
+		
 		// Si on vient d'une redirection
 		if(isset($data_get['need_connexion'])){
 			$this->view->assign('need_connexion', true);
