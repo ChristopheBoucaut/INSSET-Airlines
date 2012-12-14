@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ReservationVol" >
+
+    <ListView
+        android:id="@+id/listViewListeVol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/SpinnerPaysArriver" >
+
+    </ListView>
+
+    <Spinner
+        android:id="@+id/spinnerChoixPaysDepart"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textViewPaysDepart" />
+
+    <TextView
+        android:id="@+id/TextViewPaysArriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textViewPaysDepart"
+        android:layout_below="@+id/spinnerChoixPaysDepart"
+        android:layout_marginTop="15dp"
+        android:text="Pays d&apos;arriver :" />
+
+    <TextView
+        android:id="@+id/textViewPaysDepart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spinnerChoixPaysDepart"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="67dp"
+        android:text="Pays de départ :" />
+
+    <Spinner
+        android:id="@+id/SpinnerPaysArriver"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/spinnerChoixPaysDepart"
+        android:layout_toRightOf="@+id/TextViewPaysArriver" />
+
+</RelativeLayout>

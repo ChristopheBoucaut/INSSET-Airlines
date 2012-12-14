@@ -26,9 +26,9 @@ public final class R {
     }
     public static final class id {
         public static final int EditTextAlertMaintenance=0x7f080021;
-        public static final int SpinnerPaysArriver=0x7f08001b;
+        public static final int SpinnerPaysArriver=0x7f080019;
         public static final int TextViewAlertMaintenance=0x7f080020;
-        public static final int TextViewPaysArriver=0x7f080018;
+        public static final int TextViewPaysArriver=0x7f08001c;
         public static final int button1=0x7f080005;
         public static final int button2=0x7f08000f;
         public static final int buttonAjouterMaintenance=0x7f08000d;
@@ -40,11 +40,11 @@ public final class R {
         public static final int editText2=0x7f080002;
         public static final int editTextImmatriculationAjoutMaintenance=0x7f080006;
         public static final int img=0x7f08001d;
-        public static final int listViewListeVol=0x7f08001a;
+        public static final int listViewListeVol=0x7f080018;
         public static final int lvChoix=0x7f08000a;
         public static final int lvMaintenance=0x7f08000b;
         public static final int menu_settings=0x7f080022;
-        public static final int spinnerChoixPaysDepart=0x7f080019;
+        public static final int spinnerChoixPaysDepart=0x7f08001a;
         public static final int spinnerChoixTypeMaintenance=0x7f080008;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080003;
@@ -54,7 +54,7 @@ public final class R {
         public static final int textViewNbPlaceRestante=0x7f080014;
         public static final int textViewNbPlacesReservation=0x7f080017;
         public static final int textViewNbPlacesTotal=0x7f080015;
-        public static final int textViewPaysDepart=0x7f08001c;
+        public static final int textViewPaysDepart=0x7f08001b;
         public static final int textViewPiloteCopiloteVol=0x7f080016;
         public static final int textViewTypeAvion=0x7f080013;
         public static final int textViewVilleArrive=0x7f080010;

@@ -1,0 +1,103 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Reservation" >
+
+    <TextView
+        android:id="@+id/textViewVilleDepart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="28dp"
+        android:text="depart : ville d" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Retour" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Reserver" />
+
+    <TextView
+        android:id="@+id/textViewVilleArrive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewVilleDepart"
+        android:layout_below="@+id/textViewVilleDepart"
+        android:layout_marginTop="14dp"
+        android:text="Arriver : ville A" />
+
+    <TextView
+        android:id="@+id/textViewDateDepart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewVilleArrive"
+        android:layout_below="@+id/textViewVilleArrive"
+        android:layout_marginTop="14dp"
+        android:text="Date : 12 dec 2012" />
+
+    <TextView
+        android:id="@+id/textViewHoraireDepart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewDateDepart"
+        android:layout_below="@+id/textViewDateDepart"
+        android:layout_marginTop="14dp"
+        android:text="Horaire : 12 h 00" />
+
+    <TextView
+        android:id="@+id/textViewTypeAvion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewHoraireDepart"
+        android:layout_below="@+id/textViewHoraireDepart"
+        android:layout_marginTop="14dp"
+        android:text="Avion : Boeing 747" />
+
+    <TextView
+        android:id="@+id/textViewNbPlaceRestante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewTypeAvion"
+        android:layout_below="@+id/textViewTypeAvion"
+        android:text="nb Place restante : 80" />
+
+    <TextView
+        android:id="@+id/textViewNbPlacesTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewNbPlaceRestante"
+        android:layout_below="@+id/textViewNbPlaceRestante"
+        android:text="nb place total : 200" />
+
+    <TextView
+        android:id="@+id/textViewPiloteCopiloteVol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewNbPlacesTotal"
+        android:layout_below="@+id/textViewNbPlacesTotal"
+        android:layout_marginTop="15dp"
+        android:text="Pilote / Co Pilote :  Mario / Lugi" />
+
+    <TextView
+        android:id="@+id/textViewNbPlacesReservation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewPiloteCopiloteVol"
+        android:layout_below="@+id/textViewPiloteCopiloteVol"
+        android:layout_marginTop="45dp"
+        android:text="Nombre de place(s) à réserver : " />
+
+</RelativeLayout>
