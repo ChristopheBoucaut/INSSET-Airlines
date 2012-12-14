@@ -3,6 +3,7 @@ package com.example.projet_airlines;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -116,6 +117,7 @@ public class ListeMaintenance extends Activity {
 
         		adb.setMessage("Durée de la maintenance pour : "+map.get("matricule"));
         		final String matricule_avion = map.get("matricule");
+        		final String date_rev = recupereSeulementDate(map.get("date"));
         		
         		//On crée un bouton "Annuler" à notre AlertDialog et on lui affecte un évènement
                 adb.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -130,7 +132,7 @@ public class ListeMaintenance extends Activity {
                     	EditText et = (EditText)alertDialogView.findViewById(R.id.EditTextAlertMaintenance);
 
                     	//Toast.makeText(getApplicationContext(), "Execution UPDATE sur la base ", Toast.LENGTH_SHORT).show();
-                    	maintenanceTerminer(matricule_avion, et.getText().toString());
+                    	maintenanceTerminer(matricule_avion, et.getText().toString(), date_rev);
                     	//Supprime l'avion qu'on vient de terminer la révision ...          	
                   } });
         		
@@ -141,19 +143,20 @@ public class ListeMaintenance extends Activity {
 		});
 	}
 
-	private void maintenanceTerminer(String matriculeAvion, String duree){
+	private void maintenanceTerminer(String matriculeAvion, String duree, String date_revision){
 		
 		// On ajoute nos données dans une liste
-        List nameValuePairs = new ArrayList(2);
+        List nameValuePairs = new ArrayList(3);
         // On ajoute nos valeurs ici un login et le mot de passe
         nameValuePairs.add(new BasicNameValuePair("matricule", matriculeAvion));
         nameValuePairs.add(new BasicNameValuePair("duree", duree));
+        nameValuePairs.add(new BasicNameValuePair("date_revision", date_revision));
         //Création d'un objet pour faire des demande HTTP
         ToolsHTTPandJASON Reponse = new ToolsHTTPandJASON();
         //Stock la valeur en mémoire pour eviter de faire l'appel 2x (car je fait un affichage dans le log console)
         String Requete = Reponse.RecuperationRequeteHTTP("http://10.0.2.2/script_fin_maintenance.php", nameValuePairs, PARSE_JSON);
         Log.i("INFO : ", Requete);
-        Toast.makeText(getApplicationContext(), matriculeAvion + "Enregistrement effectué.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Enregistrement effectué.", Toast.LENGTH_SHORT).show();
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,4 +165,20 @@ public class ListeMaintenance extends Activity {
 		return true;
 	}
 
+	public String recupereSeulementDate(String dateParam){
+		StringTokenizer stringTokenizer = new StringTokenizer(dateParam, " : ");
+		return stringTokenizer.nextToken();
+	}
+	public String convertirEnDateFr(String dateParam){
+		
+		StringTokenizer stringTokenizer = new StringTokenizer(dateParam, " : ");
+		StringTokenizer stringTokenizer_d = new StringTokenizer(stringTokenizer.nextToken(), "-");
+	    String annee = stringTokenizer_d.nextToken();
+	    String mois = stringTokenizer_d.nextToken();
+	    String jours = stringTokenizer_d.nextToken();
+	     
+	    Toast.makeText(getApplicationContext(), "Date convert : " + jours+"-"+mois+"-"+annee, Toast.LENGTH_SHORT).show();
+		return jours+"-"+mois+"-"+annee;
+	}
+	
 }

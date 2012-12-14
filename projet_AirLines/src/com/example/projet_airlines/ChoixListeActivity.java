@@ -55,7 +55,7 @@ public class ChoixListeActivity extends Activity{
  
         map = new HashMap<String, String>();
         map.put("titre", "Vol");
-        map.put("description", "Liste des vols");
+        map.put("description", "Reservation / Liste des vols");
         map.put("img", String.valueOf(R.drawable.vol));
         listItem.add(map);
  
@@ -103,6 +103,14 @@ public class ChoixListeActivity extends Activity{
 	        		Intent intent = new Intent(ChoixListeActivity.this, Maintenance.class);
 					intent.putExtra("utilisateur", user);// besoin de "implements Parcelable" dans la classe Utilisateur
 					Toast.makeText(getApplicationContext(), "Maintenance.", Toast.LENGTH_SHORT).show();
+					startActivity(intent);//lance l'activity des choix de l'utilisateur
+					//finish();//ferme l'activity primaire de connexion
+        		}
+        		else if(map.get("titre").equals("Vol")){
+        			// Lance l'activity selon le choix de l'utilisateur
+	        		Intent intent = new Intent(ChoixListeActivity.this, ReservationVol.class);
+					intent.putExtra("utilisateur", user);// besoin de "implements Parcelable" dans la classe Utilisateur
+					Toast.makeText(getApplicationContext(), "Vol.", Toast.LENGTH_SHORT).show();
 					startActivity(intent);//lance l'activity des choix de l'utilisateur
 					//finish();//ferme l'activity primaire de connexion
         		}

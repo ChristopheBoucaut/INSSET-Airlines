@@ -73,7 +73,7 @@ public class AjouterMaintenance extends Activity {
 		            
 					//spJours.getSelectedItem().toString();
 		            int nPos = spRevision.getSelectedItemPosition();
-		            if(nPos == 2){
+		            if(nPos == 1){
 		            	JoursRevision = "10";
 		            }else{
 		            	JoursRevision = "2";
