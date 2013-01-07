@@ -62,7 +62,7 @@ class AvionController extends Zend_Controller_Action
 		//Instancie le form créer
 		$formAjoutTypeAvion = new Application_Form_AjoutTypeAvion();
 		//Instancie le model créer
-		$class_listebrevet = new Application_Model_TListeBrevet();
+		$class_listebrevet = new Application_Model_TListeBrevetS();
 		//Instancie le model créer
 		$class_typeavion = new Application_Model_TTypeAvion();
 		

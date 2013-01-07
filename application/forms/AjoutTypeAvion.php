@@ -31,7 +31,7 @@ class Application_Form_AjoutTypeAvion extends Zend_Form
 		$idBrevet->setRequired(true);
 		$idBrevet->setDecorators($decorators_input);
 		//Instancie class ligne
-		$class_listebrevet = new Application_Model_TListeBrevet;
+		$class_listebrevet = new Application_Model_TListeBrevets;
 		//Requete pour les aéroports
 		$listeBrevet = $class_listebrevet->select()->from((array('lb' => 'liste_brevets')), array("lb.id_brevet","lb.code"));
 		//Recupération des résultat de la requete
