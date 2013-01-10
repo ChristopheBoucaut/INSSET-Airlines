@@ -17,5 +17,9 @@ html, body{
 	border:1px solid black;
 	width:980px;
 	margin:auto;
-	background-image:url('../img/overlay_bg.png');
+	/*background-image:url('../img/overlay_bg.png');*/
+}
+
+.stop-float{
+	clear:both;
 }
