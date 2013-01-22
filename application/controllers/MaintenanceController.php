@@ -119,9 +119,14 @@ class MaintenanceController extends Zend_Controller_Action
 		$formValidation = new Application_Form_ValidationMaintenance();
 		//Instancie la classe créer
 		$class_maintenance = new Application_Model_TMaintenance();
+		
+		
+		
+		
 		//Envoie a la vue le form
 		$this->view->assign('form_maintenance_validation',$formValidation);
 		// on récupère les données du formulaire
+		
 		$data = $this->getRequest()->getPost();
 		
 		if(!$this->getRequest()->getPost())
@@ -132,20 +137,20 @@ class MaintenanceController extends Zend_Controller_Action
 		else
 		{
 			// on récupère login et mot de passe pour tester la connexion
-
-				//SUPPRESSION DANS LA BASE DE DONNEE
-				for($i = 1; $i <= count($data); $i++)
-				{
-					$resultat = $class_maintenance->find($data[$i])->current();
-					$resultat->date_effective = $data[$i] ;
-					$resultat->duree_effective = $data[$i+1];
-					$resultat->save();
-				}
-				//Envoie a la vue le form
-				$this->view->assign('form_maintenance_suppr_planif',$formMaintenanceSupprPlanif);
-				$Done = true;
-				$this->view->Done = $Done;
-			
+			//SUPPRESSION DANS LA BASE DE DONNEE
+			var_dump($data);
+			die();
+			for($i = 1; $i <= count($data); $i++)
+			{
+				$resultat = $class_maintenance->find($data[$i])->current();
+				$resultat->date_effective = $data[$i] ;
+				$resultat->duree_effective = $data[$i+1];
+				$resultat->save();
+			}
+			//Envoie a la vue le form
+			$this->view->assign('form_maintenance_suppr_planif',$formMaintenanceSupprPlanif);
+			$Done = true;
+			$this->view->Done = $Done;
 		}
 	}
 }

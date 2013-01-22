@@ -36,25 +36,58 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 																			'avion.immatriculation'))
 							->join('avion', 'avion.id_avion = maintenance.id_avion', 'id_avion');
 		$listeResultat = $class_maintenance->fetchAll($requete);
-		
-		foreach($listeResultat as $res)
+
+		//Recuperation des paramétre
+		$id = 2;
+		//$id = (int)$this->_request->getParam("id");
+		if(empty($id))
 		{
-			if($res->date_effective == NULL)
+			foreach($listeResultat as $res)
 			{
-				$dateeffective = new Zend_Form_Element_Text("$res->id_maintenance" . "date_effective");
-				$dureeeffective = new Zend_Form_Element_Text("$res->id_maintenance" . "duree_effective");
-				$dateeffective->setLabel("$res->immatriculation / $res->date_prevue / $res->duree_prevue Date effective:");
-				$dureeeffective->setLabel('Durée effective');
+				if($res->date_effective == NULL)
+				{
+					echo'<a href="validation?id='. $res->id_maintenance.'">'.$res->immatriculation . ' ' .$res->date_prevue . '</a><br>';
+				}
+			}	
+		}
+		else
+		{
+			$requeteID = $class_maintenance->select()->setIntegrityCheck(false)
+						->from((array('maintenance','avion')),array('maintenance.id_maintenance',
+																	'maintenance.date_prevue',
+																	'maintenance.duree_prevue',
+																	'maintenance.date_effective',
+																	'maintenance.duree_effective',
+																'avion.immatriculation'))
+						->join('avion', 'avion.id_avion = maintenance.id_avion', 'id_avion')
+						->where('id_maintenance = ?' , $id);
+			$resultatID = $class_maintenance->fetchAll($requeteID);
+				
+			foreach($resultatID as $resImma)
+			{
+				$idmaintenance = new Zend_Form_Element_Hidden('id_maintenance');
+				$idmaintenance->setValue($id);
+				$dateprevue = new Zend_Form_Element_Hidden('date_prevue');
+				$dateprevue->setValue($resImma->date_prevue);
+				$dureeprevue = new Zend_Form_Element_Hidden('duree_prevue');
+				$dureeprevue->setValue($resImma->duree_prevue);
+				$idavion = new Zend_Form_Element_Hidden('id_avion');
+				$idavion->setValue($resImma->id_avion);
+				$dateeffective = new Zend_Form_Element_Text('date_effective');
+				$dureeeffective = new Zend_Form_Element_Text('duree_effective');
+				$dateeffective->setLabel('Date effective :');
+				$dureeeffective->setLabel('Durée effective :');
+				$this->addElement($idmaintenance);
+				$this->addElement($dateprevue);
+				$this->addElement($dureeprevue);
 				$this->addElement($dateeffective);
 				$this->addElement($dureeeffective);
+				$this->addElement($idavion);
 			}
 		}
-		
-		
+
 		//Instancie un element type submit
 		$btSubmit = new Zend_Form_Element_Submit('Envoyer');
-		
-		
 		$this->addElement($btSubmit);
 	
 
