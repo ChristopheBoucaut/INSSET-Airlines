@@ -1,6 +1,11 @@
 <?php
 class AvionController extends Zend_Controller_Action
 {
+	public function indexAction()
+	{
+		
+		
+	}
 	public function ajoutAction()
 	{
 		//Instancie le form créer

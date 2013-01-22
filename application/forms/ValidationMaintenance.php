@@ -21,7 +21,7 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 		//Paramétre le formulaire
 		$this->setMethod('post');
 		$this->setAction(Zend_Registry::get('baseUrl'));
-		$this->setAttrib('id', 'form_vol');
+		$this->setAttrib('id', 'form_validation');
 		$this->addDecorators($decorators_form);
 		
 		//Instancie la classe maintenance
@@ -41,8 +41,8 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 		{
 			if($res->date_effective == NULL)
 			{
-				$dateeffective = new Zend_Form_Element_Text("$res->id_maintenance . date_effective");
-				$dureeeffective = new Zend_Form_Element_Text("$res->id_maintenance . duree_effective");
+				$dateeffective = new Zend_Form_Element_Text("$res->id_maintenance" . "date_effective");
+				$dureeeffective = new Zend_Form_Element_Text("$res->id_maintenance" . "duree_effective");
 				$dateeffective->setLabel("$res->immatriculation / $res->date_prevue / $res->duree_prevue Date effective:");
 				$dureeeffective->setLabel('Durée effective');
 				$this->addElement($dateeffective);

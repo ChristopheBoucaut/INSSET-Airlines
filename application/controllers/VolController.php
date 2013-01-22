@@ -1,6 +1,10 @@
 <?php
 class VolController extends Zend_Controller_Action
 {
+	public function indexAction()
+	{
+		
+	}
 	public function creationAction()
 	{
 		//Instancie le form créer
