@@ -36,4 +36,22 @@ class Application_Model_TAvion extends Zend_Db_Table_Abstract
 					'refTableClass' => 'type_avion',
 					'refColumns' => 'id_type'));
 
+	/**
+	 * Permet de récupérer l'id d'un avion en fonction de son immatriculation
+	 * @param: string $immatriculation
+	 * @return: boolean|int
+	 **/
+	public function idDepuisImmatriculation($immatriculation){
+		// créer la requete
+		$req = $this->select()->from('avion', array('id_avion'))->where("immatriculation = ?", $immatriculation);
+		
+		//Recupération des résultat de la requete
+		$resultat = $this->fetchRow($req);
+		
+		if($resultat == null){
+			return false;
+		}
+		
+		return $resultat->id_avion;
+	}
 }
