@@ -115,16 +115,16 @@ class MaintenanceController extends Zend_Controller_Action
 	}
 	public function validationAction()
 	{
+		//Recuperation des paramétre en url
+		$id = (int)$this->_request->getParam("id");
 		//Instancie le form créer
 		$formValidation = new Application_Form_ValidationMaintenance();
+		//Envoie de l'id en paramétre au formulaire pour la maintenance selectionné
+		$formValidation->startform($id); 
+		
 		//Instancie la classe créer
 		$class_maintenance = new Application_Model_TMaintenance();
-		
-		
-		
-		
-		//Envoie a la vue le form
-		$this->view->assign('form_maintenance_validation',$formValidation);
+
 		// on récupère les données du formulaire
 		
 		$data = $this->getRequest()->getPost();
@@ -138,19 +138,16 @@ class MaintenanceController extends Zend_Controller_Action
 		{
 			// on récupère login et mot de passe pour tester la connexion
 			//SUPPRESSION DANS LA BASE DE DONNEE
-			var_dump($data);
-			die();
-			for($i = 1; $i <= count($data); $i++)
-			{
-				$resultat = $class_maintenance->find($data[$i])->current();
-				$resultat->date_effective = $data[$i] ;
-				$resultat->duree_effective = $data[$i+1];
-				$resultat->save();
-			}
+			$resultat = $class_maintenance->find($data['id_maintenance'])->current();
+			$resultat->date_effective = $data['date_effective'] ;
+			$resultat->duree_effective = $data['duree_effective'];
+			$resultat->save();
 			//Envoie a la vue le form
-			$this->view->assign('form_maintenance_suppr_planif',$formMaintenanceSupprPlanif);
+			$this->view->assign('form_maintenance_validation',$formValidation);
 			$Done = true;
 			$this->view->Done = $Done;
 		}
+
+		
 	}
 }

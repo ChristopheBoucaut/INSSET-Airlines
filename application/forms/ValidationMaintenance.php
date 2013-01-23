@@ -1,8 +1,13 @@
 <?php
 class Application_Form_ValidationMaintenance extends Zend_Form 
 {
-	public function init()
+	
+	private $id;  
+
+	public function startform($v_id)
 	{
+		//Recupération du paramétre
+		$this->id = $v_id; 	
 		// Décorateur pour les inputs de login et mdp
 		$decorators_input = array(
 				array('ViewHelper'),
@@ -36,10 +41,9 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 																			'avion.immatriculation'))
 							->join('avion', 'avion.id_avion = maintenance.id_avion', 'id_avion');
 		$listeResultat = $class_maintenance->fetchAll($requete);
-
-		//Recuperation des paramétre
-		$id = 2;
-		//$id = (int)$this->_request->getParam("id");
+		//Stockage du paramétre dans une variable
+		$id = $this->id;
+		//S'il n'y a aucun paramétre en url on affiche les maintenance
 		if(empty($id))
 		{
 			foreach($listeResultat as $res)
@@ -52,6 +56,7 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 		}
 		else
 		{
+			//Sinon on affiche la maintenance selectionné
 			$requeteID = $class_maintenance->select()->setIntegrityCheck(false)
 						->from((array('maintenance','avion')),array('maintenance.id_maintenance',
 																	'maintenance.date_prevue',
@@ -62,7 +67,7 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 						->join('avion', 'avion.id_avion = maintenance.id_avion', 'id_avion')
 						->where('id_maintenance = ?' , $id);
 			$resultatID = $class_maintenance->fetchAll($requeteID);
-				
+			//Affichage des deux champs désire avec les autres champ caché (hidden)
 			foreach($resultatID as $resImma)
 			{
 				$idmaintenance = new Zend_Form_Element_Hidden('id_maintenance');
@@ -83,13 +88,11 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 				$this->addElement($dateeffective);
 				$this->addElement($dureeeffective);
 				$this->addElement($idavion);
+				//Instancie un element type submit
+				$btSubmit = new Zend_Form_Element_Submit('Envoyer');
+				$this->addElement($btSubmit);
 			}
 		}
-
-		//Instancie un element type submit
-		$btSubmit = new Zend_Form_Element_Submit('Envoyer');
-		$this->addElement($btSubmit);
-	
-
 	}
+
 }
