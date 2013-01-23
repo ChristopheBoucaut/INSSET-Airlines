@@ -71,7 +71,7 @@ class AndroidController extends Zend_Controller_Action
 				$data_connected = $dbAdapter->getResultRowObject(null, 'mdp');
 				$resultat_return['id_utilisateur'] = $data_connected->id_utilisateur;
 				$resultat_return['login'] = $data_connected->login;
-	
+				
 				// On instancie le modele de la table section pour récupérer les sections donc l'utilisateur a accès
 				$tsection = new Application_Model_TSection();
 
@@ -99,7 +99,7 @@ class AndroidController extends Zend_Controller_Action
 			}
 		}
 		$resultat_return['test_connexion'] = $test_connexion;
-		echo json_encode($resultat_return);
+		echo json_encode(array($resultat_return));
 	}
 	
 	/**
@@ -134,7 +134,7 @@ class AndroidController extends Zend_Controller_Action
 		}
 		
 		$resultat_return['test_ajout'] = $test_ajout;
-		echo json_encode($resultat_return);
+		echo json_encode(array($resultat_return));
 	}
 	
 	/**
@@ -142,12 +142,25 @@ class AndroidController extends Zend_Controller_Action
 	 * @return: void
 	 **/
 	public function listermaintenanceAction(){
+		
+		// Tableau retourné
+		$resultat_return = array();
+		
+		// variable pour signifier s'il y a des maintenances prévues dans les 4 semaines à venir
+		$test_maintenance = false;
+		
 		// date limite pour lister les maintenance
 		$Dans4semaines = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+28,   date("Y")));
 		
 		// on instancie le model maintenance
 		$tmaintenance = new Application_Model_TMaintenance();
-		echo json_encode($tmaintenance->listerMaintenance($Dans4semaines, true));
+		$liste_maintenances = $tmaintenance->listerMaintenance($Dans4semaines, true);
+		if(count($liste_maintenances)>0){
+			$test_maintenance = true;
+			$resultat_return['liste_maintenance'] = $liste_maintenances;
+		}
+		$resultat_return['test_maintenance'] = $test_maintenance;
+		echo json_encode(array($resultat_return));
 		
 	}
 	
@@ -177,6 +190,6 @@ class AndroidController extends Zend_Controller_Action
 		}
 		
 		$resultat_return['test_suppression'] = $test_suppression;
-		echo json_encode($resultat_return);
+		echo json_encode(array($resultat_return));
 	}
 }
