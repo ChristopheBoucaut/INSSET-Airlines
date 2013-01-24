@@ -37,7 +37,7 @@ function disabledLink(lien_clique){
 	/*
 	 * Lance la requête ajax vers la page désirée lors du clique
 	 */
-	appelAjax(url, null, null);
+	appelAjax(url, null, {'ajax':'1'});
 }
 
 /**
