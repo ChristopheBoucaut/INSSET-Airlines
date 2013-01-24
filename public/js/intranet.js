@@ -5,17 +5,26 @@ $(document).ready(function(){
 		$(this).parent('li').addClass('onglet-select');
 		e.preventDefault();
 		disabledLink($(this));
-	})
+	});
+	
+	$('#content-menu .menu-onglet li').hover(
+		function(){
+			$(this).children('ul').css('display','block');
+		},
+		function(){
+			$(this).children('ul').css('display','none');
+		}
+	);
 	
 	$('#content-menu a').live('click', function(e){
 		e.preventDefault();
 		disabledLink($(this));
-	})
+	});
 	
 	$('#content-menu form').live('submit', function(e){
 		e.preventDefault();
 		disabledForm($(this));
-	})
+	});
 });
 
 /**

@@ -172,6 +172,7 @@ class IntranetController extends Zend_Controller_Action
 	 **/
 	public function menuAction(){
 		echo $this->view->headLink()->appendStylesheet($this->view->baseUrl()."/css/intranet.css");
+		echo $this->view->headLink()->appendStylesheet($this->view->baseUrl()."/css/intranet_menu.css");
 		echo $this->view->headScript()->appendFile($this->view->baseUrl().'/js/jquery.js');
 		echo $this->view->headScript()->appendFile($this->view->baseUrl().'/js/intranet.js');
 		
@@ -190,30 +191,49 @@ class IntranetController extends Zend_Controller_Action
 		
 		// Permet de créer le tableau avec le nom des sections + le lien
 		foreach($liste_sections_acces as $id_section){
+			// données pour les liens du menu de l'intranet
+			$donnees = array();
+			
+			//permet de définir quel onglet on traite
 			switch ($all_sections[$id_section]) {
 				case "Gestion des avions":
-					$content_onglets[$all_sections[$id_section]] = 'avion/index';
+					$donnees['baseurl'] = 'avion/index';
+					$donnees['sous_menu'] = array();
+					$donnees['sous_menu']['Ajout avion'] = "avion/ajout";
+					$donnees['sous_menu']['Ajout type avion'] = "avion/type";
 					break;
 				case "Gestion des lignes":
-					$content_onglets[$all_sections[$id_section]] = 'ligne/ajout';
+					$donnees['baseurl'] = 'ligne/index';
+					$donnees['sous_menu'] = array();
+					$donnees['sous_menu']['Ajout ligne'] = "ligne/ajout";
+					$donnees['sous_menu']['Supprimer ligne'] = "ligne/suppr";
 					break;
 				case "Gestion du personnel naviguant":
-					$content_onglets[$all_sections[$id_section]] = 'personnel/index';
+					$donnees['baseurl'] = 'personnel/index';
 					break;
 				case "Maintenance des avions":
-					$content_onglets[$all_sections[$id_section]] = 'maintenance/planif';
+					$donnees['baseurl'] = 'maintenance/index';
+					$donnees['sous_menu'] = array();
+					$donnees['sous_menu']['Planifier maintenance'] = "maintenance/planif";
+					$donnees['sous_menu']['Supprimer maintenance'] = "maintenance/supprplanif";
+					$donnees['sous_menu']['Valider maintenance'] = "maintenance/validation";
 					break;
 				case "Planification":
-					$content_onglets[$all_sections[$id_section]] = 'planification/index';
+					$donnees['baseurl'] = 'vol/index';
+					$donnees['sous_menu'] = array();
+					$donnees['sous_menu']['Créer vol'] = "vol/creation";
 					break;
 				case "Préparation des plats":
-					$content_onglets[$all_sections[$id_section]] = 'plat/index';
+					$donnees['baseurl'] = 'plat/index';
 					break;
 				case "Supervisation":
-					$content_onglets[$all_sections[$id_section]] = 'supervisation/index';
+					$donnees['baseurl'] = 'supervisation/index';
 					break;		
 				default:
 					break;			
+			}
+			if(!empty($donnees)){
+				$content_onglets[$all_sections[$id_section]] = $donnees;
 			}
 		}
 		$this->view->assign("content_onglets", $content_onglets);
