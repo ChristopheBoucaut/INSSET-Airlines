@@ -50,7 +50,8 @@ class Application_Form_ValidationMaintenance extends Zend_Form
 			{
 				if($res->date_effective == NULL)
 				{
-					echo'<a href="validation?id='. $res->id_maintenance.'">'.$res->immatriculation . ' ' .$res->date_prevue . '</a><br>';
+					$baseUrl = new Zend_View_Helper_BaseUrl();
+                    echo'<a href="'.$baseUrl->baseUrl('maintenance/validation').'?id='. $res->id_maintenance.'">'.$res->immatriculation . ' ' .$res->date_prevue . '</a><br>';
 				}
 			}	
 		}
