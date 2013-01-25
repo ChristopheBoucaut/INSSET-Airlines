@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.menu-onglet,
+.menu-onglet>li{
+	position:relative;
+}
+
+.menu-onglet .sous-menu{
+	display:none;
+	position:absolute;
+	top:100%;
+	left:0px;
+}
+
+.menu-onglet .sous-menu li{
+	display:block;
+}
