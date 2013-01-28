@@ -1,7 +1,7 @@
 <?php
 
 /**
- *
+ * Permet de travailler sur la table aeroport
  * @class: Application_Model_TAeroport
  * @file: TAeroport.php
  *

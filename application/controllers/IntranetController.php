@@ -227,7 +227,7 @@ class IntranetController extends Zend_Controller_Action
 					$donnees['baseurl'] = 'plat/index';
 					break;
 				case "Supervisation":
-					$donnees['baseurl'] = 'supervisation/index';
+					$donnees['baseurl'] = 'incident/ajout';
 					break;		
 				default:
 					break;			

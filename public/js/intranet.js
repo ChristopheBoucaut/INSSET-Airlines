@@ -3,6 +3,7 @@ $(document).ready(function(){
 	$('#content-menu .menu-onglet a').live('click', function(e){
 		$('#content-menu .menu-onglet li').removeClass('onglet-select');
 		$(this).parent('li').addClass('onglet-select');
+		$(this).parent('li').parent('ul').parent('li').addClass('onglet-select');
 		e.preventDefault();
 		disabledLink($(this));
 	});
