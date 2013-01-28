@@ -15,3 +15,16 @@
 .menu-onglet .sous-menu li{
 	display:block;
 }
+
+#menu
+{
+	position:absolute;
+	width:989px;
+}
+
+.menu-onglet .onglet-select
+{
+	background-color: rgba(254, 254, 254, 0.4);
+}
+
+

@@ -1,25 +1,173 @@
-html, body{
-	height:100%;
-	width:100%;
-}
 
-#background{
-	background-image:url('../img/background.jpg');
-	background-repeat:no-repeat;
-	height:100%;
-	position:absolute;
-	left:50%;
-	margin-left:-680px;
-	width:1361px;
-}
-
-#main{
-	border:1px solid black;
-	width:980px;
-	margin:auto;
-	/*background-image:url('../img/overlay_bg.png');*/
-}
 
 .stop-float{
 	clear:both;
 }
+
+
+
+/****************/
+/*image de fond*/
+/**************/
+
+#back
+{
+	width : 100%;
+	height: 100%; 
+	position:fixed;
+}
+
+
+
+
+/******************/
+/*block connecter*/
+/****************/
+
+#content-block-connecte
+{
+	position:absolute;
+	background: rgba(0, 0, 0, 0.5);
+	/*border:1px solid black;*/
+	left:1000px;
+	top:50px;
+	
+	padding:20px;
+	width:250px;
+	text-align:center;
+	border-radius:30px;
+}
+
+
+#content-block-connecte .login{
+	color:#1F3078;
+}
+
+#content-block-connecte .deconnexion{
+	text-align:right;
+	margin-top:10px;
+}
+
+#content-block-connecte .deconnexion a{
+	color:#F70712;
+	text-decoration:none;
+}
+
+#content-block-connecte .deconnexion a:hover{
+	text-decoration:underline;
+}
+
+/**************************************************************/
+
+
+
+
+#main
+{
+
+	position:absolute;
+	width:957px;
+	margin-top:300px;
+	left:100px;
+	min-height:250px;
+	background-color: rgba(255, 255, 255, 0.4);
+	text-align:center;
+	z-index:2;
+	padding-top:30px;
+	padding-left:30px;
+	padding-right:30px;
+	border-radius:20px 20px 20px 20px;
+
+}
+
+#main p
+{
+  vertical-align: middle; 
+}
+
+
+.logo img
+{
+	position:absolute;
+	width:250px;
+	top:50px;
+	left:50px;
+}
+
+.menu-onglet
+{
+		
+	display:block;
+	margin-top:-70px;
+	margin-left:-1px;
+	width:100%;
+}
+
+.menu-onglet li
+{
+	position:relative;
+	float:left;
+	background-color: rgba(0, 0, 0, 0.4);
+	height:30px;
+	padding-top:10px;
+	font:arial;
+	border-radius:20px 20px 0px 0px;
+	
+	
+}
+
+
+.menu-onglet li a
+{
+	text-decoration:none;
+	color:black;
+	Font-family:arial;
+	Font-size:0.95em;
+	padding-left:2px;
+	padding-right:2px;
+}
+
+.login
+{
+	color:blue;
+}
+
+.deco
+{
+		margin-top:10px;
+}
+
+.deco a
+{
+	color:red;
+
+	text-decoration:none;
+}
+
+
+.sous-menu
+{
+	
+	border-radius:20px;
+}
+
+.sous-menu li
+{
+	color:red;
+	float:none;
+	display:block;
+	border-radius:0;
+	border-bottom:1px solid black;
+	width:150px;
+	height:20px;
+	padding-top:0;
+}
+
+
+.lienmain
+{
+	text-decoration:none;
+	color: #F26100;
+}
+
+

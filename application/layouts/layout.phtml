@@ -9,7 +9,18 @@
 		<link href="<?php echo $this->baseUrl(); ?>/css/resetcss.css" media="screen" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+	
+		
 		<div id="background">
+			<img id="back" src="<?php echo $this->baseUrl(); ?>/img/background.jpg">
+			
+			<div id="content-block-connecte">
+				<?php 
+					echo $this->action('cadreconnecte', 'intranet');
+				?>
+			</div>
+			
+			
 			<div id="main">
 				<?php 
 					echo $this->layout()->content;
