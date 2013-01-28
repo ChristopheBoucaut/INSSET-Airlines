@@ -192,4 +192,87 @@ class AndroidController extends Zend_Controller_Action
 		$resultat_return['test_suppression'] = $test_suppression;
 		echo json_encode(array($resultat_return));
 	}
+	
+	/**
+	 * Permet d'ajouter une opération sur une maintenance
+	 * @return: void
+	 **/
+	public function ajouteroperationAction(){
+		// Tableau retourné
+		$resultat_return = array();
+		
+		// on récupère les informations de POST
+		$data = $this->getRequest()->getPost();
+		
+		// variable pour signifier si l'ajout à eu lieu
+		$test_ajout = false;
+		
+		if(isset($data['id_maintenance']) && isset($data['action'])){
+			// on instancie le model pour travailler sur la table action_maintenance
+			$taction_maintenance = new Application_Model_TActionMaintenance();
+			$id_action = $taction_maintenance->ajouterAction($data['id_maintenance'],$data['action']);
+			if($id_action){
+				$test_ajout = true;
+				$resultat_return['id_action'] = intval($id_action);
+			}
+		}
+		
+		$resultat_return['test_ajout'] = $test_ajout;
+		echo json_encode(array($resultat_return));
+	}
+	
+	/**
+	 * Permet de valider une opération sur une maintenance 
+	 * @return: void
+	 **/
+	public function valideroperationAction(){
+		// Tableau retourné
+		$resultat_return = array();
+		
+		// on récupère les informations de POST
+		$data = $this->getRequest()->getPost();
+		
+		// variable pour signifier si l'ajout à eu lieu
+		$test_validation = false;
+		
+		if(isset($data['id_action'])){
+			// on instancie le model pour travailler sur la table action_maintenance
+			$taction_maintenance = new Application_Model_TActionMaintenance();
+			$row = $taction_maintenance->validerAction($data['id_action']);
+			if($row){
+				$test_validation = true;
+			}
+		}
+		
+		$resultat_return['test_validation'] = $test_validation;
+		echo json_encode(array($resultat_return));
+	}
+	
+	/**
+	 * Permet de liste les opérations liées à une maintenance
+	 * @return: void
+	 **/
+	public function listeroperationAction(){
+		// Tableau retourné
+		$resultat_return = array();
+		
+		// on récupère les informations de POST
+		$data = $this->getRequest()->getPost();
+		
+		// variable pour signifier si l'ajout à eu lieu
+		$test_lister = false;
+		
+		if(isset($data['id_maintenance'])){
+			// on instancie le model pour travailler sur la table action_maintenance
+			$taction_maintenance = new Application_Model_TActionMaintenance();
+			$liste_operation = $taction_maintenance->listerAction($data['id_maintenance'], true);
+			if(is_array($liste_operation) && count($liste_operation)>0){
+				$test_lister = true;
+				$resultat_return['liste_operation'] = $liste_operation;
+			}
+		}
+		
+		$resultat_return['test_lister'] = $test_lister;
+		echo json_encode(array($resultat_return));
+	}
 }
