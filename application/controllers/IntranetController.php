@@ -223,8 +223,11 @@ class IntranetController extends Zend_Controller_Action
 					$donnees['sous_menu'] = array();
 					$donnees['sous_menu']['Créer vol'] = "vol/creation";
 					break;
-				case "Préparation des plats":
-					$donnees['baseurl'] = 'plat/index';
+				case "Lister les vols":
+					$donnees['baseurl'] = 'listevols/index';
+					$donnees['sous_menu'] = array();
+					$donnees['sous_menu']['Ajouter un vol'] = "listevols/ajout";
+					$donnees['sous_menu']['Supprimer un vol'] = "listevols/suppr";
 					break;
 				case "Supervisation":
 					$donnees['baseurl'] = 'incident/ajout';
