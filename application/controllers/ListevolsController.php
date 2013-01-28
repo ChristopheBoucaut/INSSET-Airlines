@@ -55,7 +55,6 @@ class ListeVolsController extends Zend_Controller_Action
 	
 	public function supprAction()
 	{
-		echo'ok';
 		
 		//Instancie le form créer
 		$formSupprListevol = new Application_Form_SupprListevol();
@@ -92,16 +91,13 @@ class ListeVolsController extends Zend_Controller_Action
 				//var_dump($data);
 				//die();
 				//SUPPRESSION DANS LA BASE DE DONNEE
-				echo'jdndfkjn';
-				echo count($data);
-				echo'jdndfkjn';
+
 				if(count($data['id_vol'])>'1')
 				{
-					for($i = 0; $i <= count($data['id_vol']); $i++)
+					for($i = 0; $i < count($data['id_vol']); $i++)
 					{
-					$resultat = $class_Listevols->find($data['id_vol'])->current();
-
-					$resultat->delete();
+						$resultat = $class_Listevols->find($data['id_vol'])->current();
+						$resultat->delete();
 					}
 				}
 				else
@@ -109,7 +105,7 @@ class ListeVolsController extends Zend_Controller_Action
 					$resultat = $class_Listevols->find($data["id_vol"])->current();
 					$resultat->delete();
 				}
-		
+				echo'la suppression a été effectuer';
 			}
 		
 		}
