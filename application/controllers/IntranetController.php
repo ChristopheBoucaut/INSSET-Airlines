@@ -209,7 +209,7 @@ class IntranetController extends Zend_Controller_Action
 					$donnees['sous_menu']['Supprimer ligne'] = "ligne/suppr";
 					break;
 				case "Gestion du personnel naviguant":
-					$donnees['baseurl'] = 'personnel/index';
+					$donnees['baseurl'] = 'brevet/index';
 					break;
 				case "Maintenance des avions":
 					$donnees['baseurl'] = 'maintenance/index';
