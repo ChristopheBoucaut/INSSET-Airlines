@@ -136,6 +136,10 @@ class MaintenanceController extends Zend_Controller_Action
 		}
 		else
 		{
+			//Recupération de la date decouper
+			$text = explode("/",$data['date_effective']);
+			//Recreation de la date au format desiré
+			$data['date_effective'] = $text[2] . $text[0] . $text[1];
 			// on récupère login et mot de passe pour tester la connexion
 			//SUPPRESSION DANS LA BASE DE DONNEE
 			$resultat = $class_maintenance->find($data['id_maintenance'])->current();
