@@ -51,7 +51,7 @@ class Application_Form_SupprLigne extends Zend_Form
 		*/
 							
 		//Test d'affichage de la jointure
-		echo $requete->assemble();
+		//echo $requete->assemble();
 		$listeResultat = $class_Ligne->fetchAll($requete);
 		//Ajout d'un label au champ d'ajout
 		foreach($listeResultat as $res)
