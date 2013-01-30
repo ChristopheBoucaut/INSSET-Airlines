@@ -1,9 +1,24 @@
 <?php
 
-echo $this->form_afficher_reservation;
+
 
 if($this->Done == true)
 {
 	echo 'Ajout effectué dans la base de donnée';
 }
+else
+{
+	echo $this->nb_places_reservees . " place(s) pour : <br>";
+	echo "Vol en provenance de " . $this->aeroport_depart . " du " . $this->date_vol_depart . "<br>";
+	echo "A destination de " . $this->aeroport_arrive . " pour le " . $this->date_vol_arrive . "<br><br>";
+	
+	echo "Info Client : <br><br>";
+	echo "Nom : " . $this->nom_client . "<br>";
+	echo "Prenom : " . $this->prenom_client . "<br>";
+	echo "Adresse de facturation : " . $this->adresse_facturation . "<br>";
+	echo "Adresse de livraison : " . $this->adresse_livraison;
+	
+	
+	echo $this->form_afficher_reservation;
 
+}

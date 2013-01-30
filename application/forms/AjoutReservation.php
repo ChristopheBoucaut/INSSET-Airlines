@@ -86,6 +86,12 @@ class Application_Form_AjoutReservation extends Zend_Form
 		$client = new Zend_Form_Element_Text('email_client');
 		$client->setLabel('eMail :');
 		$client->setRequired(true);
+		$client->addFilter('StringToLower');
+		$client->addFilter('StringTrim');
+		$client->addValidator('EmailAddress');
+		$client->setErrorMessages(array("Vous devez obligatoirement remplir ce champs avec une adresse mail correcte."));
+		
+		
 
 		
 		//Instancie un element type submit
