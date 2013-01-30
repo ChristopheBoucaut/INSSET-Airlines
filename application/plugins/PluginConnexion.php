@@ -20,7 +20,7 @@ class Application_Plugin_PluginConnexion extends Zend_Controller_Plugin_Abstract
 	 * 
 	 * @var: 
 	 **/
-	private $controllers_public = array('index', 'android', 'error');
+	private $controllers_public = array('index', 'android', 'error', 'reservation');
 	
 	/**
 	 * Fonction appliqué avant le lancement du controller désiré

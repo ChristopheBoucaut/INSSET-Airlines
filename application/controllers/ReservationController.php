@@ -14,8 +14,11 @@ class ReservationController extends Zend_Controller_Action
 		//Instancie la classe créer
 		$class_Reservation = new Application_Model_TReservation();
 		
+		// on récupère le namespace contenant les informations sur la reservation
+		$info_reservation = new Zend_Session_Namespace('reservation');
+		$info_reservation->setExpirationSeconds(3600);
 		
-		if(!$this->getRequest()->getPost())
+		if(!$this->getRequest()->getPost() && !isset($info_reservation->mail_client))
 		{
 			//Envoie a la vue le form
 			$this->view->assign('form_ajout_reservation',$formAjoutReservation);
@@ -27,7 +30,14 @@ class ReservationController extends Zend_Controller_Action
 			//$formAjoutLigne->isValid($data);
 			//Verif des donnée du formulaire
 			
-			 
+			// si des info sont déjà en session, on les utilise
+			if(isset($info_reservation->mail_client) && isset($info_reservation->nb_place) && isset($info_reservation->numero_vol)){
+				$data['numero_vol'] = $info_reservation->numero_vol;
+				$data['nb_places_reservees'] = $info_reservation->nb_place;
+				$data['email_client'] = $info_reservation->mail_client;
+				$info_reservation->unsetAll();
+			}
+
 			if($formAjoutReservation->isValid($data)==true)
 			{ 
 				// on récupère les infos du formulaire
@@ -53,6 +63,12 @@ class ReservationController extends Zend_Controller_Action
 					
 					$idClient = $ligneInstance->fetchAll($requete);
 					$array_client = $idClient->toArray();
+					// si le client n'est pas encore enregistré, on stocke les données à utiliser après ajout des informations sur le client
+					if(empty($array_client)){
+						$info_reservation->nb_place = $data['nb_places_reservees'];
+						$info_reservation->numero_vol = $data['numero_vol'];
+						$this->_helper->getHelper('Redirector')->gotoSimple('newclient', 'index');
+					}
 					$data['email_client'] = $array_client[0]['id_client'];
 					$data['id_client'] = $data['email_client'];
 					$id_client = $data['id_client'];
@@ -69,7 +85,7 @@ class ReservationController extends Zend_Controller_Action
 					//AJOUT DANS LA BD
 					$ajoutReservation = $class_Reservation->createRow($data);
 					$id = $ajoutReservation->save();
-					$this->_helper->getHelper('Redirector')->gotoSimple(afficher, reservation, null, array('id_reservation'=>$id));
+					$this->_helper->getHelper('Redirector')->gotoSimple('afficher', 'reservation', null, array('id_reservation'=>$id));
 					
 					$this->view->assign('form_ajout_reservation',$formAjoutReservation);
 					$Done = true;
