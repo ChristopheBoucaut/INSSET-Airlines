@@ -88,17 +88,16 @@
 }
 
 
-.logo img
+.logo
 {
 	position:absolute;
 	width:250px;
-	top:50px;
 	left:50px;
+	top: 50px;
 }
 
 .menu-onglet
 {
-		
 	display:block;
 	margin-top:-70px;
 	margin-left:-1px;
@@ -114,8 +113,6 @@
 	padding-top:10px;
 	font:arial;
 	border-radius:20px 20px 0px 0px;
-	
-	
 }
 
 
@@ -137,7 +134,7 @@
 
 .deco
 {
-		margin-top:10px;
+	margin-top:10px;
 }
 
 .deco a
