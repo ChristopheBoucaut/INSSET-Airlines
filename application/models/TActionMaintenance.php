@@ -55,7 +55,7 @@ class Application_Model_TActionMaintenance extends Zend_Db_Table_Abstract
 			$new_action = $this->createRow();
 			$new_action->id_maintenance = $id_maintenance;
 			$new_action->action = $action;
-			$new_action->description = 0;
+			$new_action->description = $description;
 			$new_action->etat = 0;
 			return $new_action->save();
 		}catch(Exception $e){
