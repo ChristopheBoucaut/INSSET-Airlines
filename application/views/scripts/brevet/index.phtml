@@ -1,0 +1,24 @@
+<?php 
+
+$listeResultat = $this-> listePilote;
+$pilote = $this->pilote;
+
+if(isset($listeResultat))
+{
+	echo'<p>Selectionner un pilote pour modifier les brevets :</p>';
+	
+	foreach($listeResultat as $a)
+	{
+		echo'<a href="'.$this->baseUrl('brevet/ajout/id/'.$a->id_pilote.'') .'">'.$a->nom_pilote.' '.$a->prenom_pilote.'</a><br>';
+	}
+}
+else
+{
+	if(isset($pilote))
+	{
+		echo '<p> Que souhaitez-vous faire pour '.$pilote->nom_pilote.' '.$pilote->prenom_pilote.'?</br>
+		<a href="'.$this->baseUrl('brevet/ajout/id/'.$pilote->id_pilote.'') .'">ajouter un brevet</a>
+		<a href="'.$this->baseUrl('brevet/ajout/id/'.$pilote->id_pilote.'') .'">Supprimer un brevet</a>
+		</p>';
+	}
+}

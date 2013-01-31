@@ -27,7 +27,7 @@ class Application_Form_SupprListevol extends Zend_Form
 		$this->setAttrib('id', 'form_suppr_listevol');
 		$this->addDecorators($decorators_form);
 	
-		//Instancie un element type file
+		//Instancie un element type multicheckbox
 		$idLigne = new Zend_Form_Element_MultiCheckbox('id_vol');
 		
 		//Instancie la classe LIGNE
