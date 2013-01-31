@@ -129,6 +129,7 @@ class AndroidController extends Zend_Controller_Action
 				$id_maintenance = $tmaintenance->ajoutMaintenance($id_avion, $data['date'], $data['duree']);
 				if($id_maintenance){
 					$test_ajout = true;
+					$resultat_return['id_maintenance'] = $id_maintenance;
 				}
 			}
 		}
@@ -176,19 +177,18 @@ class AndroidController extends Zend_Controller_Action
 		$data = $this->getRequest()->getPost();
 		
 		// variable pour signifier si la suppression à eu lieu
-		$test_suppression = false;
+		$test_validation = false;
 
 		if(isset($data['id_maintenance'])){
-
 			// on instancie le model pour travailler sur la maintenance
 			$tmaintenance = new Application_Model_TMaintenance();
 			$id_maintenance = $tmaintenance->finirMaintenance($data['id_maintenance']);
 			if($id_maintenance){
-				$test_suppression = true;
+				$test_validation = true;
 			}
 		}
 		
-		$resultat_return['test_suppression'] = $test_suppression;
+		$resultat_return['test_validation'] = $test_validation;
 		echo json_encode(array($resultat_return));
 	}
 	

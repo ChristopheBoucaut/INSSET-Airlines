@@ -85,12 +85,12 @@ class Application_Model_TMaintenance extends Zend_Db_Table_Abstract
 	
 	/**
 	 * Permet de terminer une maintenance
-	 * @param: int|string $id_avion
+	 * @param: int|string $id_maintenance
 	 * @param: int $duree
 	 * @param: string $date_effective
 	 * @return: int|boolean
 	 **/
-	public function finirMaintenance($id_avion, $duree=null, $date_effective=null){
+	public function finirMaintenance($id_maintenance, $duree=null, $date_effective=null){
 		// on prépare certaine variable
 		if($duree==null){
 			$duree = 0;
@@ -103,18 +103,18 @@ class Application_Model_TMaintenance extends Zend_Db_Table_Abstract
 		$req = $this->select()->from('maintenance');
 		
 		// on convertit l'id passé en string
-		if(!is_string($id_avion)){
-			$id_avion = (string) $id_avion;
+		if(!is_string($id_maintenance)){
+			$id_maintenance = (string) $id_maintenance;
 		}
 		
 		// si c'est un nombre on n'a pas de jointure a faire
-		if(ctype_digit($id_avion)){
-			$req->where('id_avion = ?', $id_avion);
+		if(ctype_digit($id_maintenance)){
+			$req->where('id_maintenance = ?', $id_maintenance);
 		}else{
 			// si c'est une chaine de caractère, il faut récupérer l'id via une jointure
 			$req->setIntegrityCheck(false)
 				->join('avion', 'avion.id_avion = maintenance.id_avion')
-				->where('avion.immatriculation = ?', $id_avion);
+				->where('avion.immatriculation = ?', $id_maintenance);
 		}
 		
 		// récupère les résultats
