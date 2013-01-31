@@ -41,18 +41,21 @@ class Application_Model_TActionMaintenance extends Zend_Db_Table_Abstract
 	 * Permet d'ajouter une action sur une maintenance
 	 * @param: int $id_maintenance
 	 * @param: string $action
+	 * @param: string $description
 	 * @return: int|bool
 	 **/
-	public function ajouterAction($id_maintenance, $action){
+	public function ajouterAction($id_maintenance, $action, $description){
 		// on prépare les variables
 		$id_maintenance = intval($id_maintenance);
 		$action = strval($action);
+		$description = strval($description);
 		
 		try{
 			// on ajoute une ligne en bdd
 			$new_action = $this->createRow();
 			$new_action->id_maintenance = $id_maintenance;
 			$new_action->action = $action;
+			$new_action->description = 0;
 			$new_action->etat = 0;
 			return $new_action->save();
 		}catch(Exception $e){
@@ -102,6 +105,7 @@ class Application_Model_TActionMaintenance extends Zend_Db_Table_Abstract
 				$resultats_array[$row->id_maintenance][$row->id_action]['id_action'] = $row->id_action;
 				$resultats_array[$row->id_maintenance][$row->id_action]['etat'] = $row->etat;
 				$resultats_array[$row->id_maintenance][$row->id_action]['action'] = $row->action;
+				$resultats_array[$row->id_maintenance][$row->id_action]['description'] = $row->description;
 			}
 			
 			return $resultats_array;
