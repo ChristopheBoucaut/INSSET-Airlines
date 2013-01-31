@@ -268,7 +268,11 @@ class AndroidController extends Zend_Controller_Action
 			$liste_operation = $taction_maintenance->listerAction($data['id_maintenance'], true);
 			if(is_array($liste_operation) && count($liste_operation)>0){
 				$test_lister = true;
-				$resultat_return['liste_operation'] = $liste_operation;
+				$test = array();
+				foreach($liste_operation[$data['id_maintenance']] as $id_operation=>$val){
+					$test[] = $val;
+				}
+				$resultat_return['liste_operation'] = $test;
 			}
 		}
 		

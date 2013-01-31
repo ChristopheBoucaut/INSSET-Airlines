@@ -99,6 +99,7 @@ class Application_Model_TActionMaintenance extends Zend_Db_Table_Abstract
 			
 			// on formate les données sous forme d'un tableau
 			foreach($resultats as $row){
+				$resultats_array[$row->id_maintenance][$row->id_action]['id_action'] = $row->id_action;
 				$resultats_array[$row->id_maintenance][$row->id_action]['etat'] = $row->etat;
 				$resultats_array[$row->id_maintenance][$row->id_action]['action'] = $row->action;
 			}

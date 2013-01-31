@@ -27,4 +27,35 @@ class Application_Model_TClient extends Zend_Db_Table_Abstract
 	 **/
 	protected $_primary = 'id_client';
 	
+	
+	/**
+	 * Permet d'ajouter un client
+	 * @param: string $nom_client
+	 * @param: string $prenom_client
+	 * @param: string $email_client
+	 * @param: string $adresse_facturation
+	 * @param: string $adresse_livraison
+	 * @return: bool|int
+	 **/
+	public function ajoutClient($nom_client, $prenom_client, $email_client, $adresse_facturation, $adresse_livraison){
+		// on formate les paramètres pour ajouter de bonnes valeurs en BDD
+		$nom_client = strval($nom_client);
+		$prenom_client = strval($prenom_client);
+		$email_client = strval($email_client);
+		$adresse_facturation = strval($adresse_facturation);
+		$adresse_livraison = strval($adresse_livraison);
+		
+		// on ajoute en bdd
+		try{
+			$new_client = $this->createRow();
+			$new_client->nom_client = $nom_client;
+			$new_client->prenom_client = $prenom_client;
+			$new_client->email_client = $email_client;
+			$new_client->adresse_facturation = $adresse_facturation;
+			$new_client->adresse_livraison = $adresse_livraison;
+			return $new_client->save();
+		}catch(Exception $e){
+			return false;
+		}
+	}
 }
