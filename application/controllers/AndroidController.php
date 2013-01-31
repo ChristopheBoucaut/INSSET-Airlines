@@ -178,12 +178,11 @@ class AndroidController extends Zend_Controller_Action
 		// variable pour signifier si la suppression à eu lieu
 		$test_suppression = false;
 
-		if(isset($data['duree']) && isset($data['date_revision']) && isset($data['matricule'])
-				&& (preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $data['date_revision'])==1)){
+		if(isset($data['id_maintenance'])){
 
 			// on instancie le model pour travailler sur la maintenance
 			$tmaintenance = new Application_Model_TMaintenance();
-			$id_maintenance = $tmaintenance->finirMaintenance($data['matricule'], $data['date_revision'], $data['duree']);
+			$id_maintenance = $tmaintenance->finirMaintenance($data['id_maintenance']);
 			if($id_maintenance){
 				$test_suppression = true;
 			}
@@ -207,10 +206,10 @@ class AndroidController extends Zend_Controller_Action
 		// variable pour signifier si l'ajout à eu lieu
 		$test_ajout = false;
 		
-		if(isset($data['id_maintenance']) && isset($data['action'])){
+		if(isset($data['id_maintenance']) && isset($data['action']) && isset($data['description'])){
 			// on instancie le model pour travailler sur la table action_maintenance
 			$taction_maintenance = new Application_Model_TActionMaintenance();
-			$id_action = $taction_maintenance->ajouterAction($data['id_maintenance'],$data['action']);
+			$id_action = $taction_maintenance->ajouterAction($data['id_maintenance'],$data['action'],$data['description']);
 			if($id_action){
 				$test_ajout = true;
 				$resultat_return['id_action'] = intval($id_action);

@@ -86,16 +86,21 @@ class Application_Model_TMaintenance extends Zend_Db_Table_Abstract
 	/**
 	 * Permet de terminer une maintenance
 	 * @param: int|string $id_avion
-	 * @param: string $date_prevue
 	 * @param: int $duree
-	 * @param: string $date_reelle
+	 * @param: string $date_effective
 	 * @return: int|boolean
 	 **/
-	public function finirMaintenance($id_avion, $date_prevue, $duree, $date_reelle=null){
+	public function finirMaintenance($id_avion, $duree=null, $date_effective=null){
+		// on prépare certaine variable
+		if($duree==null){
+			$duree = 0;
+		}
+		if($date_effective == null){
+			$date_effective = date('Y-m-d');
+		}
+		
 		// on prépare la requete
-		$req = $this->select()->from('maintenance')
-							->where("date_prevue = ?", $date_prevue)
-							->where('date_effective IS NULL OR duree_effective IS NULL');
+		$req = $this->select()->from('maintenance');
 		
 		// on convertit l'id passé en string
 		if(!is_string($id_avion)){
@@ -119,7 +124,7 @@ class Application_Model_TMaintenance extends Zend_Db_Table_Abstract
 		if($resultat->count() == 1){
 			// on récupère la ligne de la bdd
 			$maintenance_finie = $resultat->current();
-			$maintenance_finie->date_effective = date('Y-m-d');
+			$maintenance_finie->date_effective = $date_effective;
 			$maintenance_finie->duree_effective = intval($duree);
 			return $maintenance_finie->save();
 		}else{
