@@ -35,6 +35,23 @@ class VolController extends Zend_Controller_Action
 				$id_avion = $data['id_avion'];
 				$id_pilote = intval($data['id_pilote']);
 				$id_copilote = intval($data['id_copilote']);
+				
+			}
+			else
+			{
+				$id_vol = "";
+				$heure_depart = "";
+				$heure_arrivee = "";
+				$id_avion = "";
+				$id_pilote = "";
+				$id_copilote = "";
+			}
+			if($id_vol != "" && $heure_depart != "" && $heure_arrivee != ""
+				 && $id_avion != "" && $id_pilote != "" && $id_copilote != "")
+			{
+				
+				
+				//PREPARATION DES INFO POUR AJOUT
 				//Recupération de la date de depart a decouper
 				$DateHeureDepart = explode(" ",$data['date_vol_depart']);
 				//Recreation de la date au format desiré
@@ -63,20 +80,8 @@ class VolController extends Zend_Controller_Action
 				//mktime(h,i,s,m,d,y,dst):
 				//heure,minute,seconde,mois,jour,annee
 				/* CALCUL DE LA DUREE DU VOL */
+			
 				
-			}
-			else
-			{
-				$id_vol = "";
-				$heure_depart = "";
-				$heure_arrivee = "";
-				$id_avion = "";
-				$id_pilote = "";
-				$id_copilote = "";
-			}
-			if($id_vol != "" && $heure_depart != "" && $heure_arrivee != ""
-				 && $id_avion != "" && $id_pilote != "" && $id_copilote != "")
-			{
 				//AJOUT DANS LA BD
 				$ajoutVol = $class_vol->createRow($data);
 				$ajoutVol->save();
@@ -100,6 +105,12 @@ class VolController extends Zend_Controller_Action
 				$this->view->assign('form_vol',$formVol);
 				$Done = true;
 				$this->view->Done = $Done;
+			}
+			else
+			{
+				//Envoie a la vue le form
+				$this->view->assign('form_vol',$formVol);
+				echo 'Champ invalide';
 			}
 		}
 	}
