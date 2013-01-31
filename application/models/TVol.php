@@ -25,7 +25,7 @@ class Application_Model_TVol extends Zend_Db_Table_Abstract
 	 * Contient le nom de la clé primaire
 	 * @var: string $_primary
 	 **/
-	protected $_primary = 'id_vol';
+	protected $_primary = 'numero_vol';
 	
 	/**
 	 * Contient les références des clés étrangères aux autres tables

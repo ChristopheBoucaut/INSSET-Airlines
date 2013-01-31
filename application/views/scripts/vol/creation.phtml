@@ -1,4 +1,20 @@
-
+<link href="<?php echo $this->baseUrl(); ?>/css/jquery-ui.css" media="screen" rel="stylesheet" type="text/css">
+<script src="<?php echo $this->baseUrl(); ?>/js/jquery-1.8.3.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/js/jquery-ui.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/js/jquery-ui-timepicker-addon.js"></script>
+	<script>
+	$(document).ready(function(){
+		$(function() {
+		$('#date_vol_depart').datetimepicker();
+		$('#date_vol_arrive').datetimepicker();
+		});
+	});
+    </script>
+    
 <?php
  echo $this->form_vol;
+ if($this->Done == true)
+{
+	echo 'Ajout effectué dans la base de donnée';
+}
  

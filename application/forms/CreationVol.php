@@ -44,20 +44,14 @@ class Application_Form_CreationVol extends Zend_Form
 		}
 
 		//Champ de l'heure de depart
-		$idHdepart = new Zend_Form_Element_Text('heure_depart');
-		$idHdepart->setLabel('Heure depart :');
-		$idHdepart->setRequired(true);
+		$DateDepart = new Zend_Form_Element_Text('date_vol_depart');
+		$DateDepart->setLabel('Date depart :');
+		$DateDepart->setRequired(true);
 		
 		//Champ de l'heure de depart
-		$idHarrive = new Zend_Form_Element_Text('heure_arrive');
-		$idHarrive->setLabel('Heure arrive :');
-		$idHarrive->setRequired(true);
-		
-		//Champ de l'année de la date prévue
-		$datevol = new Zend_Form_Element_Text('datepicker');
-		$datevol->setLabel('Date Vol :');
-		$datevol->setRequired(true);
-		$datevol->setDecorators($decorators_input);
+		$DateArrivee = new Zend_Form_Element_Text('date_vol_arrive');
+		$DateArrivee->setLabel('Date arrive :');
+		$DateArrivee->setRequired(true);
 		
 		//Champ de l'id avion
 		$idAvion = new Zend_Form_Element_Select('id_avion');
@@ -101,7 +95,7 @@ class Application_Form_CreationVol extends Zend_Form
 		}
 		
 		//Champ de l'id copilote
-		$idCoPilote = new Zend_Form_Element_Select('id_co_pilote');
+		$idCoPilote = new Zend_Form_Element_Select('id_copilote');
 		$idCoPilote->setLabel('Co-Pilote :');
 		$idCoPilote->setRequired(true);
 		$idCoPilote->setDecorators($decorators_input);
@@ -128,9 +122,8 @@ class Application_Form_CreationVol extends Zend_Form
 		
 		//Ajout des élément dans le formulaire
 		$this->addElement($idVol);
-		$this->addElement($idHdepart);
-		$this->addElement($idHarrive);
-		$this->addElement($datevol);
+		$this->addElement($DateDepart);
+		$this->addElement($DateArrivee);
 		$this->addElement($idAvion);
 		$this->addElement($idPilote);
 		$this->addElement($idCoPilote);
