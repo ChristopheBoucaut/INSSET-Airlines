@@ -9,11 +9,20 @@
 		$('#date_vol_arrive').datetimepicker();
 		});
 	});
+    
+	$(document).ready(function(){
+		$(function() {
+    	var idpilote = $('#id_pilote option:selected').val();
+    	//$('#id_copilote').remove($('#id_pilote option:selected').text());
+    	$("#id_copilote option[value='" + idpilote + "']").remove();  
+		});
+	});
+	
     </script>
     
 <?php
  echo $this->form_vol;
- if($this->Done == true)
+if($this->Done == true)
 {
 	echo 'Ajout effectué dans la base de donnée';
 }
