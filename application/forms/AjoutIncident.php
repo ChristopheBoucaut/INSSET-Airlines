@@ -57,9 +57,9 @@ class Application_Form_AjoutIncident extends Zend_Form
 		$ligneInstance = new Application_Model_TVol;
 		//Requete pour les vols en cours
 		$listeVolEnCour = $ligneInstance->select()
-										->from('vol', array("numero_vol", "heure_depart", "heure_arrivee"))
-										->where("heure_depart IS NOT NULL")
-										->where("heure_arrivee IS NULL");
+										->from('vol', array("numero_vol", "date_vol_depart", "date_vol_arrive"))
+										->where("date_vol_depart IS NOT NULL")
+										->where("date_vol_arrive IS NULL");
 		
 		//Recupération des résultat de la requete
 		$listeResultat = $ligneInstance->fetchAll($listeVolEnCour);
@@ -69,7 +69,7 @@ class Application_Form_AjoutIncident extends Zend_Form
 		//Remplissage des deux select avec les valeur de la requete
 		foreach( $listeResultat as $res )
 		{
-			$tNum->addMultiOption($res->numero_vol, $res->numero_vol .'  /  '. $res->heure_depart);
+			$tNum->addMultiOption($res->numero_vol, $res->numero_vol .'  /  '. $res->date_vol_depart);
 		}
 
 	}

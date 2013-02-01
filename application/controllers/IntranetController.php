@@ -215,7 +215,7 @@ class IntranetController extends Zend_Controller_Action
 					$donnees['baseurl'] = 'maintenance/index';
 					$donnees['sous_menu'] = array();
 					$donnees['sous_menu']['Planifier maintenance'] = "maintenance/planif";
-					$donnees['sous_menu']['Supprimer maintenance'] = "maintenance/supprplanif";
+					$donnees['sous_menu']['Annuler maintenance'] = "maintenance/supprplanif";
 					$donnees['sous_menu']['Valider maintenance'] = "maintenance/validation";
 					break;
 				case "Planification":
